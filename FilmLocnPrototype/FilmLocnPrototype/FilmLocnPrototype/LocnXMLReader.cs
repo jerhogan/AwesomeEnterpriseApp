@@ -6,41 +6,48 @@ using System.Xml.Linq;
 
 namespace FilmLocnPrototype
 {
-    public class LocnXMLReader
+    public class LocnXMLReader : IXMLReader
     {
-        public LocnXMLReader()
+        public void setSource(String xmlSource)
         {
-            filmLocations = new FilmLocations [0];
+            this.xmlSourceName = xmlSource;
         }
 
-        private FilmLocations[] filmLocations;
-
-        public FilmLocations[] getFilmLocations ()
+        public List<FilmLocations> filmLocation()
         {
+            readXML();
             return (filmLocations);
         }
+        
+        public LocnXMLReader()
+        {
+            filmLocations = new List<FilmLocations>();
+        }
+
+        private List<FilmLocations> filmLocations;
+
+        private String xmlSourceName = "";
 
         static int numFilms = 0;
 
-        public void readXML()
+        private void readXML()
         {
             String addFilmTitle = "";
-            double addLat= 0.0F;
-            double addLng = 0.0F;
+            double addLat = 0.0;
+            double addLng = 0.0;
             String addDisplayText = "";
             int filmCellNo = 0;
             int latCellNo = 0;
             int lngCellNo = 0;
             int locationDisplayTextCellNo = 0;
             bool isFullMapList = false;
-            XDocument doc = XDocument.Load("https://nycopendata.socrata.com/download/qb3k-n8mm/application/xml");
-
+            XDocument doc = XDocument.Load(xmlSourceName);
             foreach (var w in doc.Descendants())
             {
                 isFullMapList = false;
                 if (w.Name.LocalName == "Worksheet")
                 {
-                    foreach (var x in w.Attributes ())
+                    foreach (var x in w.Attributes())
                     {
                         if (x.Name.LocalName == "Name")
                         {
@@ -61,7 +68,7 @@ namespace FilmLocnPrototype
                                 iRow++;
                                 if (iRow > 0) // Row 0 contains configuration information which we don't need
                                 {
-//                                    Console.WriteLine("Index " + (iRow - 1));
+                                    //                                    Console.WriteLine("Index " + (iRow - 1));
                                     iCell = -1;
                                     foreach (var j in i.Descendants())
                                     {
@@ -97,22 +104,22 @@ namespace FilmLocnPrototype
                                                         if (iCell == filmCellNo)
                                                         {
                                                             addFilmTitle = k.Value;
-//                                                            Console.WriteLine("Film: " + k.Value);
+                                                            //                                                            Console.WriteLine("Film: " + k.Value);
                                                         }
                                                         else if (iCell == latCellNo)
                                                         {
-                                                            addLat = double.Parse (k.Value);
-//                                                            Console.WriteLine("LATITUDE: " + k.Value);
+                                                            addLat = double.Parse(k.Value);
+                                                            //                                                            Console.WriteLine("LATITUDE: " + k.Value);
                                                         }
                                                         else if (iCell == lngCellNo)
                                                         {
-                                                            addLng = double.Parse (k.Value);
-//                                                            Console.WriteLine("LONGITUDE: " + k.Value);
+                                                            addLng = double.Parse(k.Value);
+                                                            //                                                            Console.WriteLine("LONGITUDE: " + k.Value);
                                                         }
                                                         else if (iCell == locationDisplayTextCellNo)
                                                         {
                                                             addDisplayText = k.Value;
-//                                                            Console.WriteLine("Location Display Text: " + k.Value);
+                                                            //                                                            Console.WriteLine("Location Display Text: " + k.Value);
                                                         }
                                                     }
                                                 }
@@ -128,7 +135,7 @@ namespace FilmLocnPrototype
                 }
             }
 
-//            Console.ReadLine();
+            //            Console.ReadLine();
         }
 
         private void addEntry(string filmName,
@@ -137,35 +144,37 @@ namespace FilmLocnPrototype
                                string locnDisplayText)
         {
             bool newFilm;
+            FilmLocations filmLoc;
 
-            numFilms = filmLocations.Length;
+            numFilms = filmLocations.Count;
             newFilm = true;
-            if (numFilms >= 1) 
-                if (filmLocations[numFilms - 1].filmTitle == filmName)
+            if (numFilms >= 1)
+                if (filmLocations[filmLocations.Count - 1].filmTitle == filmName)
                 {
                     newFilm = false;
                 }
             if (newFilm)
             {
                 numFilms++;
-                Array.Resize<FilmLocations> (ref filmLocations, numFilms);
-                filmLocations[numFilms - 1] = new FilmLocations();
-                filmLocations[numFilms - 1].filmTitle = filmName;
-                filmLocations[numFilms - 1].index  = numFilms - 1;
-                filmLocations[numFilms - 1].locn = new Location[0];
+                filmLoc = new FilmLocations();
+                filmLocations.Add(filmLoc);
+                filmLoc.filmTitle = filmName;
+                filmLoc.index = numFilms - 1;
+                filmLoc.locn = new List<Location>();
+            }
+            else
+            {
+                filmLoc = filmLocations[numFilms - 1];
             }
 
-            int numLocns;
-            numLocns = filmLocations[numFilms - 1].locn.Length + 1;
-            Location[] location = filmLocations[numFilms - 1].locn;
-            Array.Resize<Location>(ref location, numLocns);
-            filmLocations[numFilms - 1].locn = location;
-            filmLocations[numFilms - 1].locn[numLocns - 1] = new Location();
-            filmLocations[numFilms - 1].locn[numLocns - 1].index = numLocns - 1;
-            filmLocations[numFilms - 1].locn[numLocns - 1].locnText  = locnDisplayText;
-            filmLocations[numFilms - 1].locn[numLocns - 1].latCoord = latCoord;
-            filmLocations[numFilms - 1].locn[numLocns - 1].lngCoord  = lngCoord;
-            filmLocations[numFilms - 1].locn[numLocns - 1].radius = 0.0F;
+            int numLocns = filmLoc.locn.Count;
+            Location locn = new Location();
+            locn.index = numLocns;
+            locn.locnText = locnDisplayText;
+            locn.latCoord = latCoord;
+            locn.lngCoord = lngCoord;
+            locn.radius = 0.0;
+            filmLoc.locn.Add(locn);
         }
     }
 }

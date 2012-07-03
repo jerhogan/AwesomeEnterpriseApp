@@ -9,11 +9,11 @@ namespace FilmLocnPrototype
     {
         static void Main(string[] args)
         {
-            FilmLocations[] locations;
+            List<FilmLocations> locations;
             LocnXMLReader xmlObject = new LocnXMLReader();
 
-            xmlObject.readXML();
-            locations = xmlObject.getFilmLocations();
+            xmlObject.setSource("https://nycopendata.socrata.com/download/qb3k-n8mm/application/xml");
+            locations = xmlObject.filmLocation ();
             foreach (var loc in locations)
             {
                 Console.WriteLine("Film Index " + loc.index);
@@ -26,7 +26,7 @@ namespace FilmLocnPrototype
                     Console.WriteLine("Locn lng " + sLoc.lngCoord);
                     Console.WriteLine("Locn Radius " + sLoc.radius);
                 }
-                Console.ReadLine();
+//                Console.ReadLine();
             }
             Console.ReadLine();
         }

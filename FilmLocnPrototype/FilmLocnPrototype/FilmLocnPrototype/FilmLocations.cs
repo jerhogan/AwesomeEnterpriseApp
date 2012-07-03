@@ -9,6 +9,6 @@ namespace FilmLocnPrototype
     {
         public int index { get; set; }
         public string filmTitle { get; set; }
-        public Location[] locn { get; set; }
+        public List<Location> locn { get; set; }
     }
 }
