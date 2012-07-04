@@ -9,8 +9,8 @@ namespace AwesomeEnterpriseApp.Models
     [Table(Name = "address")]
     public class Address
     {
-        [Column(IsPrimaryKey = true, Storage = "idAddress")]
-        public int idAddress { get; set; }
+        [Column(IsPrimaryKey = true, IsDbGenerated = true)]
+        public int Id { get; set; }
         [Column(Name = "houseNumber")]
         public String houseNumber { get; set; }
         [Column(Name = "streetAddress1")]

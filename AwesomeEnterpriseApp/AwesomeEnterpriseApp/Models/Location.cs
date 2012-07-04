@@ -9,8 +9,8 @@ namespace AwesomeEnterpriseApp.Models
     [Table(Name = "location")]
     public class Location
     {
-        [Column(IsPrimaryKey = true, Storage = "idLocation")]
-        public int idLocation { get; set; }
+        [Column(IsPrimaryKey = true, IsDbGenerated = true)]
+        public int Id { get; set; }
         [Column(Name = "locnText")]
         public string locnText { get; set; }
         [Column(Name = "point")]

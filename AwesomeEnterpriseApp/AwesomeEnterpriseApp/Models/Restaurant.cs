@@ -9,8 +9,8 @@ namespace AwesomeEnterpriseApp.Models
     [Table(Name = "restaurant")]
     public class Restaurant
     {
-        [Column(IsPrimaryKey = true, Storage = "idRestaurant")]
-        public int idRestaurant { get; set; }
+        [Column(IsPrimaryKey = true, IsDbGenerated = true)]
+        public int Id { get; set; }
         [Column(Name = "name")]
         public String name { get; set; }
         [Column(Name = "cuisine")]

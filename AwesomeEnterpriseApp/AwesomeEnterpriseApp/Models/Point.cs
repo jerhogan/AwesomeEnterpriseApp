@@ -9,8 +9,8 @@ namespace AwesomeEnterpriseApp.Models
     [Table(Name = "point")]
     public class Point
     {
-        [Column(IsPrimaryKey = true, Storage = "idPoint")]
-        public int idPoint { get; set; }
+        [Column(IsPrimaryKey = true, IsDbGenerated = true)]
+        public int Id { get; set; }
         [Column(Name = "x")]
         public double x { get; set; }
         [Column(Name = "y")]

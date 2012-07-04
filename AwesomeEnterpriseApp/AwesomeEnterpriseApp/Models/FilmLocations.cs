@@ -9,8 +9,8 @@ namespace AwesomeEnterpriseApp.Models
     [Table(Name = "filmlocations")]
     public class FilmLocations
     {
-        [Column(IsPrimaryKey = true, Storage = "idFilm")]
-        public int idFilm { get; set; }
+        [Column(IsPrimaryKey = true, IsDbGenerated = true)]
+        public int Id { get; set; }
         [Column(Name = "filmTitle")]
         public string filmTitle { get; set; }
         [Column(Name = "locations")]
