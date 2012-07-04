@@ -21,7 +21,10 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
             AddressDAL addressDAL = new AddressDAL();
             Address restaurantAddress = addressDAL.addAddress(houseNumber, street1, street2, zipCode, city);
 
-            Restaurant restaurant = new Restaurant(name, cuisine, fanciness, websiteUrl, restaurantAddress, xCoord, yCoord);
+            PointDAL pointDAL = new PointDAL();
+            Point point = pointDAL.addPoint(xCoord,yCoord);
+
+            Restaurant restaurant = new Restaurant(name, cuisine, fanciness, websiteUrl, restaurantAddress, point);
             return restaurant;
         }
 
