@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessLogic\LocationCalculator.cs" />
+    <Compile Include="BusinessLogic\RestaurantFinder.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DataAccessLayer\AddressDAL.cs" />

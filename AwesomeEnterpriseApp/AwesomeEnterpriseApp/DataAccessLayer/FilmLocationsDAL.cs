@@ -18,7 +18,7 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
         /*
          * FilmLocationsDAL filmDAL = new FilmLocationsDAL();
          * FilmLocations film = filmDAL.addBaseFilmLocation("Title");
-         * filmDAL.addFilmToLocation(film, "Brooklyn", "10.123332", "-31.234432");
+         * filmDAL.addLocationToFilm(film, "Brooklyn", "10.123332", "-31.234432");
          */
         public FilmLocations addBaseFilmLocation(string filmTitle)
         {
