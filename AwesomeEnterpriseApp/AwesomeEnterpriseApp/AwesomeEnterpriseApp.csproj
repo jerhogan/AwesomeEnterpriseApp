@@ -71,6 +71,7 @@
     <Compile Include="BusinessLogic\RestaurantFinder.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RestaurantDetailsController.cs" />
     <Compile Include="DataAccessLayer\AddressDAL.cs" />
     <Compile Include="DataAccessLayer\FilmLocationsDAL.cs" />
     <Compile Include="DataAccessLayer\LocationDAL.cs" />
@@ -90,6 +91,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Views\RestaurantDetails\Index.ascx" />
+    <Content Include="Views\RestaurantDetails\RestaurantDetails.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
