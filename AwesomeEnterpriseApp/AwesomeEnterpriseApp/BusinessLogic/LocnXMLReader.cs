@@ -6,7 +6,7 @@ using System.Xml.Linq;
 using AwesomeEnterpriseApp.Models;
 using AwesomeEnterpriseApp.DataAccessLayer;
 
-namespace FilmLocnPrototype
+namespace AwesomeEnterpriseApp.BusinessLogic
 {
     public class LocnXMLReader : IXMLReader
     {
