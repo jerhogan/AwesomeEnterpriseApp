@@ -11,7 +11,27 @@ namespace AwesomeEnterpriseApp.Controllers
     {
         public ActionResult Index()
         {
-            ViewData["Message"] = "Welcome to ASP.NET MVC!";
+            ViewData["Message"] = "Welcome to Awesome!";
+
+            List<SelectListItem> movies = new List<SelectListItem>();
+
+                movies.Add(new SelectListItem { Text = "Movie Name" });
+
+            List<SelectListItem> locations = new List<SelectListItem>();
+
+                locations.Add(new SelectListItem { Text = "Filming location" });
+
+
+            List<SelectListItem> radius = new List<SelectListItem>();
+
+                radius.Add(new SelectListItem { Text = "Radius" });
+
+
+            ViewData["movieList"] = movies;
+
+            ViewData["locationList"] = locations;
+
+            ViewData["radiusList"] = radius;
 
             return View();
         }

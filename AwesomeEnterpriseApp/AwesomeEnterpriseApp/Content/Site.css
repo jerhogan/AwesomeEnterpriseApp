@@ -342,3 +342,21 @@ div#title
 {
     width: 6em;
 }
+
+/* CUSTOM STYLES */
+
+#retInf
+{
+    margin-left:30%;
+    width:60%;
+    min-height:400px;
+    margin-top:-30%;
+    background:#efefef;
+    
+}
+
+#retInf p
+{
+    margin-left:10px;
+    margin-top:10px;
+}

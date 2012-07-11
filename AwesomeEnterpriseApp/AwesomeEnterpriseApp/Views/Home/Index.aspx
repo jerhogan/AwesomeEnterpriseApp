@@ -6,7 +6,18 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%: ViewData["Message"] %></h2>
-    <p>
-        To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
-    </p>
+    <div>
+        <h6>Choose your movie:</h6><br />
+        <%= Html.DropDownList("movieList") %>
+        <h6>Choose filming location:</h6><br />
+        <%= Html.DropDownList("locationList") %>
+        <h6>Choose restaurant proximity:</h6><br />
+        <%= Html.DropDownList("radiusList") %>
+        <br/>
+        <input type="submit" value="Submit" />
+
+        <div id="retInf"><p>Your selection of restaurants</p>
+        </div>
+
+    </div>
 </asp:Content>

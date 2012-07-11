@@ -19,7 +19,7 @@ namespace AwesomeEnterpriseApp.Models
         public FilmLocations(string filmTitle, List<Location> locn)
         {
             this.filmTitle = filmTitle;
-            this.locations = locations;
+            this.locations = locn;
         }
     }
 }
