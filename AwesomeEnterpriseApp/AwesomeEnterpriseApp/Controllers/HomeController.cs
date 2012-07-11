@@ -15,9 +15,24 @@ namespace AwesomeEnterpriseApp.Controllers
 
             List<SelectListItem> movies = new List<SelectListItem>();
 
-                movies.Add(new SelectListItem { Text = "Movie Name" });
 
-            List<SelectListItem> locations = new List<SelectListItem>();
+               movies.Add(new SelectListItem { Text = "Movies" });
+
+               /*
+
+                   foreach()
+                   {
+                       
+                *       FilmLocations films = filmDAL.addBaseFilmLocation();
+                *   foreach(film in films)
+                *       {
+                *      
+                       movies.Add(new SelectListItem { Text = film });
+                        }
+                   }
+                */
+
+               List<SelectListItem> locations = new List<SelectListItem>();
 
                 locations.Add(new SelectListItem { Text = "Filming location" });
 
