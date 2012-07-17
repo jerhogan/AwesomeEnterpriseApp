@@ -8,6 +8,10 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
 {
     public class FilmLocationsDAL
     {
+
+        private FilmLocations film; 
+        
+
         public FilmLocations findFilmLocation(int idFilmLocation)
         {
             return null;
@@ -24,7 +28,7 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
         {
             List<Location> locations = new List<Location>();
 
-            FilmLocations film = new FilmLocations(filmTitle, locations);
+            film = new FilmLocations(filmTitle, locations);
 
             return film;
         }
@@ -34,7 +38,7 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
             LocationDAL locationDAL = new LocationDAL();
             Location location = locationDAL.addLocation(locationName, xCoord, yCoord);
 
-            film.locations.Add(location);
+           // film.locations.Add(location);
 
             return film;
         }
