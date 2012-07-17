@@ -23,10 +23,10 @@ namespace AwesomeEnterpriseApp.BusinessLogic
         
         public LocnXMLReader()
         {
-            filmLocations = new List<FilmLocations>();
+       
         }
 
-        private List<FilmLocations> filmLocations;
+        private List<FilmLocations> filmLocations = new List<FilmLocations>();
 
         private FilmLocationsDAL filmDAL = new FilmLocationsDAL();
 
@@ -170,8 +170,8 @@ namespace AwesomeEnterpriseApp.BusinessLogic
             }
             else
             {
+                filmLoc = filmLocations[numFilms - 1];
                 filmDAL.addLocationToFilm(filmLoc, locnDisplayText, latCoord.ToString(), lngCoord.ToString());
-                //filmLoc = filmLocations[numFilms - 1];
             }
 
             //int numLocns = filmLoc.locn.Count;
