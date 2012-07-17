@@ -5,7 +5,7 @@ using System.Web;
 using AwesomeEnterpriseApp.Models;
 
 namespace AwesomeEnterpriseApp.DataAccessLayer
-{
+{ 
     public class LocationDAL
     {
         public Location findLocation(int idLocation)

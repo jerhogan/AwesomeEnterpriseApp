@@ -11,4 +11,4 @@ namespace AwesomeEnterpriseApp.Models.UI
         public string location { get; set; }
         public double radius { get; set; }
     }
-}
+} 

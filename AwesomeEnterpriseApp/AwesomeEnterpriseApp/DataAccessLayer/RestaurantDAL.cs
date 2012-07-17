@@ -16,7 +16,7 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
         }
 
         public Restaurant addRestaurant(String name, int cuisine, int fanciness, String websiteUrl, String houseNumber, String street1, 
-            String street2, String zipCode, String city, String xCoord, String yCoord)
+            String street2, String zipCode, String city, String xCoord, String yCoord) 
         {
             AddressDAL addressDAL = new AddressDAL();
             Address restaurantAddress = addressDAL.addAddress(houseNumber, street1, street2, zipCode, city);

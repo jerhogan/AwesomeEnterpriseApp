@@ -22,7 +22,7 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
                 double y = Convert.ToDouble(yCoord);
                 point = new Point(x, y);
             }
-            return point;
+            return point; 
         }
 
         public Boolean deletePoint(int idPoint)

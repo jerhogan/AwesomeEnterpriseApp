@@ -9,7 +9,7 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
     public class AddressDAL
     {
         public Address findAddress(int idAddress)
-        {
+        { 
             return null;
         }
         public Address addAddress(String houseNumber, String street1, String street2, String zipCode, String city)
