@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
-using AwesomeEnterpriseApp.Models;
-using AwesomeEnterpriseApp.DataAccessLayer;
 
-namespace AwesomeEnterpriseApp.BusinessLogic
+namespace FilmLocnPrototype
 {
     public class LocnXMLReader : IXMLReader
     {
@@ -15,7 +13,7 @@ namespace AwesomeEnterpriseApp.BusinessLogic
             this.xmlSourceName = xmlSource;
         }
 
-        public List<FilmLocations> readAllFilms()
+        public List<FilmLocations> filmLocation()
         {
             readXML();
             return (filmLocations);
@@ -23,12 +21,10 @@ namespace AwesomeEnterpriseApp.BusinessLogic
         
         public LocnXMLReader()
         {
-       
+            filmLocations = new List<FilmLocations>();
         }
 
-        private List<FilmLocations> filmLocations = new List<FilmLocations>();
-
-        private FilmLocationsDAL filmDAL = new FilmLocationsDAL();
+        private List<FilmLocations> filmLocations;
 
         private String xmlSourceName = "";
 
@@ -148,7 +144,7 @@ namespace AwesomeEnterpriseApp.BusinessLogic
                                string locnDisplayText)
         {
             bool newFilm;
-            FilmLocations filmLoc = null;
+            FilmLocations filmLoc;
 
             numFilms = filmLocations.Count;
             newFilm = true;
@@ -160,27 +156,25 @@ namespace AwesomeEnterpriseApp.BusinessLogic
             if (newFilm)
             {
                 numFilms++;
-                filmLoc = filmDAL.addBaseFilmLocation(filmName);
-                filmDAL.addLocationToFilm(filmLoc, locnDisplayText, latCoord.ToString(), lngCoord.ToString());
+                filmLoc = new FilmLocations();
                 filmLocations.Add(filmLoc);
-
-                //filmLoc.filmTitle = filmName;
-                //filmLoc.index = numFilms - 1;
-               // filmLoc.locations = new List<Location>();
+                filmLoc.filmTitle = filmName;
+                filmLoc.index = numFilms - 1;
+                filmLoc.locn = new List<Location>();
             }
             else
             {
                 filmLoc = filmLocations[numFilms - 1];
-                filmDAL.addLocationToFilm(filmLoc, locnDisplayText, latCoord.ToString(), lngCoord.ToString());
             }
 
-            //int numLocns = filmLoc.locn.Count;
-            //Location locn = new Location();
-            //locn.index = numLocns;
-            //locn.locnText = locnDisplayText;
-            //locn.latCoord = latCoord;
-            //locn.lngCoord = lngCoord;
-            //filmLoc.locations.Add(locn);
+            int numLocns = filmLoc.locn.Count;
+            Location locn = new Location();
+            locn.index = numLocns;
+            locn.locnText = locnDisplayText;
+            locn.latCoord = latCoord;
+            locn.lngCoord = lngCoord;
+            locn.radius = 0.0;
+            filmLoc.locn.Add(locn);
         }
     }
 }

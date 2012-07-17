@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AwesomeEnterpriseApp.BusinessLogic;
+using AwesomeEnterpriseApp.DataAccessLayer;
+using AwesomeEnterpriseApp.Models;
+
 
 namespace AwesomeEnterpriseApp.Controllers
 {
@@ -13,23 +17,70 @@ namespace AwesomeEnterpriseApp.Controllers
         {
             ViewData["Message"] = "Welcome to Awesome!";
 
+           // FilmLocations film ;
+              
+            List<FilmLocations> films;
+            //FilmLocations filmLoc = new filmTitle;
+            LocnXMLReader xmlObject = new LocnXMLReader();
+            xmlObject.setSource("https://nycopendata.socrata.com/download/qb3k-n8mm/application/xml");
+            films = xmlObject.readAllFilms();
+           // FilmLocations locations = xmlObject.readAllFilms();
+
+            
+
             List<SelectListItem> movies = new List<SelectListItem>();
+            
+           
+              foreach (FilmLocations movie in films)
+              {
+              
+               movies.Add(new SelectListItem { Text = movie.filmTitle });
 
-                movies.Add(new SelectListItem { Text = "Movie Name" });
+               }
 
-            List<SelectListItem> locations = new List<SelectListItem>();
+                   
+                   /*    
+                       FilmLocations films = filmDAL.addBaseFilmLocation();
+                   foreach(film in films)
+                       {
+                      
+                       movies.Add(new SelectListItem { Text = film });
 
-                locations.Add(new SelectListItem { Text = "Filming location" });
+                        }
+                   
+
+            public int getSelectedItemId()
+            {
+                int index = ;
+                return index = null;
+            }
+
+             int index = movies.;
+            */
+             // List<Location> locations;
+            List<SelectListItem> locations2 = new List<SelectListItem>();
+
+                locations2.Add(new SelectListItem { Text = "Filming location" });
 
 
             List<SelectListItem> radius = new List<SelectListItem>();
 
-                radius.Add(new SelectListItem { Text = "Radius" });
+
+            String [] radiusVals = { "100 meters", "200 meters", "300 meters", "400 meters", "500 meters" };
+
+                
+                
+                foreach(String radiusVal in radiusVals)
+                {
+                    radius.Add(new SelectListItem { Text = radiusVal });
+                }
+                
+                
 
 
             ViewData["movieList"] = movies;
 
-            ViewData["locationList"] = locations;
+            ViewData["locationList"] = locations2;
 
             ViewData["radiusList"] = radius;
 

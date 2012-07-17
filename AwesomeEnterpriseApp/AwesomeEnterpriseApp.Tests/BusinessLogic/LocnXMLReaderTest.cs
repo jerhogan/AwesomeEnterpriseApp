@@ -82,9 +82,37 @@ namespace AwesomeEnterpriseApp.Tests
             target.addEntry(filmName, latCoord, lngCoord, locnDisplayText);
             Assert.AreEqual(target.filmLocations.Count, 1);
             Assert.AreEqual(target.filmLocations[0].filmTitle, "Die Hard");
+            Assert.AreEqual(target.filmLocations[0].locations.Count, 1);
             Assert.AreEqual(target.filmLocations[0].locations[0].point.x, 30.5);
             Assert.AreEqual(target.filmLocations[0].locations[0].point.y, -70.25);
             Assert.AreEqual(target.filmLocations[0].locations[0].locnText, "Manhattan");
+ 
+            filmName = "Die Hard";
+            latCoord = 25.5;
+            lngCoord = -55.25;
+            locnDisplayText = "Brooklyn";
+            target.addEntry(filmName, latCoord, lngCoord, locnDisplayText);
+            Assert.AreEqual(target.filmLocations.Count, 1);
+            Assert.AreEqual(target.filmLocations[0].filmTitle, "Die Hard");
+            Assert.AreEqual(target.filmLocations[0].locations.Count, 2);
+            Assert.AreEqual(target.filmLocations[0].locations[0].point.x, 30.5);
+            Assert.AreEqual(target.filmLocations[0].locations[0].point.y, -70.25);
+            Assert.AreEqual(target.filmLocations[0].locations[0].locnText, "Manhattan");
+            Assert.AreEqual(target.filmLocations[0].locations[1].point.x, 25.5);
+            Assert.AreEqual(target.filmLocations[0].locations[1].point.y, -55.25);
+            Assert.AreEqual(target.filmLocations[0].locations[1].locnText, "Brooklyn");
+
+            filmName = "Die Hard 2";
+            latCoord = 22.75;
+            lngCoord = -66.66666666667;
+            locnDisplayText = "Queens";
+            target.addEntry(filmName, latCoord, lngCoord, locnDisplayText);
+            Assert.AreEqual(target.filmLocations.Count, 2);
+            Assert.AreEqual(target.filmLocations[1].filmTitle, "Die Hard 2");
+            Assert.AreEqual(target.filmLocations[1].locations.Count, 1);
+            Assert.AreEqual(target.filmLocations[1].locations[0].point.x, 22.75);
+            Assert.AreEqual(target.filmLocations[1].locations[0].point.y, -66.66666666667);
+            Assert.AreEqual(target.filmLocations[1].locations[0].locnText, "Queens");
         }
     }
 }
