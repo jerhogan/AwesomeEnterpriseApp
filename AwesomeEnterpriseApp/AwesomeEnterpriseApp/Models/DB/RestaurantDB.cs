@@ -6,7 +6,9 @@ using System.Data.Entity;
 
 namespace AwesomeEnterpriseApp.Models.DB
 {
-    public class RestaurantDB : DBContext
+    public class RestaurantDB : DbContext
     {
+        public DbSet<Restaurant> restaurants { get; set; }
+
     }
 }
