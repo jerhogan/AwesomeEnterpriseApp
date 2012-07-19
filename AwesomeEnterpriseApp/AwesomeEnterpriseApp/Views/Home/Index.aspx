@@ -9,11 +9,16 @@
     <form id="form1" runat="server">
     <h2><%: ViewData["Message"] %></h2>
     <div>
+        <div id="firstList">
         <h6>Choose your movie:
-        </h6><br />
+        </h6>
+        <br />
         <%= Html.DropDownList("movieList") %>
+        </div>
+        <div id="secondList">
         <h6>Choose filming location:</h6><br />
         <%= Html.DropDownList("locationList") %>
+        </div>
         <h6>Choose restaurant proximity:</h6><br />
         <%= Html.DropDownList("radiusList") %>
         <br/>

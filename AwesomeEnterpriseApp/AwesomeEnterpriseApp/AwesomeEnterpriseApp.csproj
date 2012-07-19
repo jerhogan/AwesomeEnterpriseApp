@@ -93,6 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Scripts\secondListAjaxCall.js" />
     <Content Include="Views\RestaurantDetails\Index.ascx" />
     <Content Include="Views\RestaurantDetails\RestaurantDetails.aspx" />
     <Content Include="Web.config">
