@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+//using System.Web.Mvc.Ajax;
 using AwesomeEnterpriseApp.BusinessLogic;
 using AwesomeEnterpriseApp.DataAccessLayer;
 using AwesomeEnterpriseApp.Models;
@@ -86,6 +87,23 @@ namespace AwesomeEnterpriseApp.Controllers
 
             return View();
         }
+
+      /*  public ActionResult GetItems() 
+        {
+              var list = new List<SelectListItem> 
+              {new SelectListItem 
+                { Text = "not selected", Value = "" }
+              };            
+            
+            list.AddRange(filmLocations.GetAll().Select(o => new SelectListItem
+            {
+                Text = o.Name,
+                Value = o.Id.ToString(),
+                Selected = o.Id == key
+            }));
+            return Json(list);
+        
+        } */
 
         public ActionResult About()
         {

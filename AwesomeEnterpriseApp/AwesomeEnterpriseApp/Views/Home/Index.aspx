@@ -16,6 +16,8 @@
         <%= Html.DropDownList("movieList") %>
         </div>
         <div id="secondList">
+
+        <!-- SECOND LIST -->
         <h6>Choose filming location:</h6><br />
         <%= Html.DropDownList("locationList") %>
         </div>
