@@ -96,6 +96,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLogic\APIReader.cs" />
     <Compile Include="BusinessLogic\Interfaces\IXMLReader.cs" />
     <Compile Include="BusinessLogic\LocationCalculator.cs" />
     <Compile Include="BusinessLogic\LocationFinder.cs" />
@@ -123,6 +124,7 @@
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\UI\IncomingRequestUI.cs" />
     <Compile Include="Models\UI\LocationListUI.cs" />
+    <Compile Include="Models\UI\PresentedRestaurantUI.cs" />
     <Compile Include="Models\UI\SelectedFilmLocationsUI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

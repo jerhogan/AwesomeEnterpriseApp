@@ -18,22 +18,15 @@ namespace AwesomeEnterpriseApp.Controllers
         {
             ViewData["Message"] = "Welcome to Awesome!";
 
-           // FilmLocations film ;
-              
-            List<FilmLocations> films;
-            //FilmLocations filmLoc = new filmTitle;
-            LocnXMLReader xmlObject = new LocnXMLReader();
-            xmlObject.setSource("https://nycopendata.socrata.com/download/qb3k-n8mm/application/xml");
-            films = xmlObject.readAllFilms();
-           // FilmLocations locations = xmlObject.readAllFilms();
+            List<String> films = new APIReader().readAPI();
 
             List<SelectListItem> movies = new List<SelectListItem>();
             
            
-              foreach (FilmLocations movie in films)
+              foreach (String title in films)
               {
               
-               movies.Add(new SelectListItem { Text = movie.filmTitle });
+               movies.Add(new SelectListItem { Text = title });
 
                }
 

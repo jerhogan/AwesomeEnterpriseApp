@@ -15,11 +15,19 @@ namespace AwesomeEnterpriseApp.BusinessLogic
             private FilmLocationsDAL fdal = new FilmLocationsDAL();
             private List<Restaurant> restaurantsWithinRadius = null;
 
-        public List<Restaurant> getRestaurantsWithinRadius(IncomingRequestUI request)
+        public List<PresentedRestaurantUI> getRestaurantsWithinRadius(IncomingRequestUI request)
         {
-            List<Restaurant> returnableModels = new List<Restaurant>(); //Replace restaurant with viewmodel
-
             List<Restaurant> restaurantsWithinRadius = queryForRestaurantsAndCalculate(request);
+
+            List<PresentedRestaurantUI> returnableModels = convertToViewModel(restaurantsWithinRadius);
+
+            return returnableModels;
+
+        }
+
+        private static List<PresentedRestaurantUI> convertToViewModel(List<Restaurant> restaurantsWithinRadius)
+        {
+            List<PresentedRestaurantUI> returnableModels = new List<PresentedRestaurantUI>(); 
 
             if (restaurantsWithinRadius != null)
             {
@@ -29,10 +37,7 @@ namespace AwesomeEnterpriseApp.BusinessLogic
                 }
             }
 
-            
-
             return returnableModels;
-
         }
 
         // The returned list is ready to be put out over API and View
@@ -89,7 +94,7 @@ namespace AwesomeEnterpriseApp.BusinessLogic
             //create finder object
             RestaurantFinder finder = new RestaurantFinder();
             //use finder to return list of viewmodels
-            List<Restaurant> restaurantsInRadius = finder.getRestaurantsWithinRadius(request);
+            List<PresentedRestaurantUI> restaurantsInRadius = finder.getRestaurantsWithinRadius(request);
         }
     }
 }
