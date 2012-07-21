@@ -14,11 +14,11 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
 
         public Restaurant findRestaurant(String xCoord, String yCoord)
         {
-            List<Restaurant> rates = null;
+            List<Restaurant> rests = null;
 
-            rates = db.restaurants.ToList();
+            rests = db.restaurants.ToList();
 
-            foreach (Restaurant restaurant in rates)
+            foreach (Restaurant restaurant in rests)
             {
                 if (restaurant.point.x.Equals(xCoord) && restaurant.point.y.Equals(yCoord))
                 {
@@ -27,6 +27,20 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
             }
 
             return null;
+        }
+
+        public List<Restaurant> findAllRestaurants()
+        {
+            List<Restaurant> rests = null;
+
+            rests = db.restaurants.ToList();
+
+            foreach (Restaurant restaurant in rests)
+            {
+                rests.Add(restaurant);
+            }
+
+            return rests;
         }
 
         public Restaurant addRestaurant(String name, int cuisine, int fanciness, String websiteUrl, String houseNumber, String street1, 
@@ -51,7 +65,11 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
 
             Restaurant restaurant = db.restaurants.Find(idRestaurant);
 
-            db.restaurants.Remove(restaurant);
+            if (restaurant != null)
+            {
+                db.restaurants.Remove(restaurant);
+                deleted = true;
+            }
 
             return deleted;
         }

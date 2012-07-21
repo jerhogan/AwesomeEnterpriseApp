@@ -161,7 +161,7 @@ namespace AwesomeEnterpriseApp.BusinessLogic
             {
                 numFilms++;
                 filmLoc = filmDAL.addBaseFilmLocation(filmName);
-                filmDAL.addLocationToFilm(filmLoc, locnDisplayText, latCoord.ToString(), lngCoord.ToString());
+                filmDAL.addLocationToFilm(filmLoc.filmTitle, locnDisplayText, latCoord.ToString(), lngCoord.ToString());
                 filmLocations.Add(filmLoc);
 
                 //filmLoc.filmTitle = filmName;
@@ -171,7 +171,7 @@ namespace AwesomeEnterpriseApp.BusinessLogic
             else
             {
                 filmLoc = filmLocations[numFilms - 1];
-                filmDAL.addLocationToFilm(filmLoc, locnDisplayText, latCoord.ToString(), lngCoord.ToString());
+                filmDAL.addLocationToFilm(filmLoc.filmTitle, locnDisplayText, latCoord.ToString(), lngCoord.ToString());
             }
 
             //int numLocns = filmLoc.locn.Count;
