@@ -1,19 +1,35 @@
 ﻿$(document).ready(function () {
+    // alert("ok?";
 
-    $('#firstList option').click(function () {
-        $('#secondList').show();
-        $.ajax({
-            type: 'POST',
-            url: 'HomeController.cs',
-            dataType: 'xml',
-            complete: function addContent(msg) {
-                $('select').append('<option></option>');
-                //$('#ajax').append(msg.responseXML.getElementsByTagName('div')[0]);
-            },
-            error: function showError() {
-                //$('#sidebar').append('<div id="ajax"><a href="embed-ajax.xhtml">Error</a></div>');
-            }
-        })
+    $("select#movieList").change(function () {
 
+        alert("ok?");
+        $("#secondList").show();
+
+       
+
+        if ($('select#movieList').children(":selected")) {
+
+            var filmName = $('select#movieList').children(":selected").html();
+            
+             alert(filmName);
+
+            $.ajax({
+                type: 'POST',
+                url: 'selectedFilmLocationsUI.cs',
+                dataType: 'xml',
+                data:filmName,
+                success: function (filmName) {
+
+                    $('select#locationList').append(data.responseXML);
+
+                },
+
+                error: function showError() {
+                    alert("There has been an error!")
+                      }
+
+            })
+        }
     });
 });

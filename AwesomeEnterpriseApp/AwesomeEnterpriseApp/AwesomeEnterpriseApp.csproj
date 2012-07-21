@@ -121,6 +121,7 @@
     <Compile Include="Models\Point.cs" />
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\UI\IncomingRequestUI.cs" />
+    <Compile Include="Models\UI\selectedFilmLocationsUI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

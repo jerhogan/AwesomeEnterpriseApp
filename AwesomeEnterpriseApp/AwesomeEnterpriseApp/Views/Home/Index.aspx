@@ -15,12 +15,23 @@
         <br />
         <%= Html.DropDownList("movieList") %>
         </div>
-        <div id="secondList">
 
-        <!-- SECOND LIST -->
+
+        
+
+
+
+
+
+        <!-- SECEOND LIST -->
+        <div id="secondList">
+         
         <h6>Choose filming location:</h6><br />
         <%= Html.DropDownList("locationList") %>
         </div>
+        
+
+
         <h6>Choose restaurant proximity:</h6><br />
         <%= Html.DropDownList("radiusList") %>
         <br/>

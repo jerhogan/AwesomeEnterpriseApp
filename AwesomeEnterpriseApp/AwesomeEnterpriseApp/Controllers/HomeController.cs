@@ -27,8 +27,6 @@ namespace AwesomeEnterpriseApp.Controllers
             films = xmlObject.readAllFilms();
            // FilmLocations locations = xmlObject.readAllFilms();
 
-            
-
             List<SelectListItem> movies = new List<SelectListItem>();
             
            
@@ -39,10 +37,11 @@ namespace AwesomeEnterpriseApp.Controllers
 
                }
 
-                   
-                   /*    
-                       FilmLocations films = filmDAL.addBaseFilmLocation();
-                   foreach(film in films)
+
+              /* selectedFilmLocations selected = new selectedFilmLocations(); 
+                       
+                       
+                   foreach(Select in selected)
                        {
                       
                        movies.Add(new SelectListItem { Text = film });
@@ -67,7 +66,7 @@ namespace AwesomeEnterpriseApp.Controllers
             List<SelectListItem> radius = new List<SelectListItem>();
 
 
-            String [] radiusVals = { "100 meters", "200 meters", "300 meters", "400 meters", "500 meters" };
+            String [] radiusVals = { "1km", "2kms", "3kms", "4kms", "5kms" };
 
                 
                 
@@ -88,22 +87,36 @@ namespace AwesomeEnterpriseApp.Controllers
             return View();
         }
 
-      /*  public ActionResult GetItems() 
-        {
-              var list = new List<SelectListItem> 
-              {new SelectListItem 
-                { Text = "not selected", Value = "" }
-              };            
+        /*  public ActionResult GetItems() 
+          {
+                var list = new List<SelectListItem> 
+                {new SelectListItem 
+                  { Text = "not selected", Value = "" }
+                };            
             
-            list.AddRange(filmLocations.GetAll().Select(o => new SelectListItem
-            {
-                Text = o.Name,
-                Value = o.Id.ToString(),
-                Selected = o.Id == key
-            }));
-            return Json(list);
+              list.AddRange(filmLocations.GetAll().Select(o => new SelectListItem
+              {
+                  Text = o.Name,
+                  Value = o.Id.ToString(),
+                  Selected = o.Id == key
+              }));
+              return Json(list);
         
-        } */
+          } 
+       
+         public string UpdateForm(string textBox1)
+            {
+            if (textBox1 != "Enter text")
+            {
+            return "You entered: \"" + textBox1.ToString() + "\" at " +
+                  DateTime.Now.ToLongTimeString();
+            }
+
+      return String.Empty;
+  }
+       
+       
+         */
 
         public ActionResult About()
         {
