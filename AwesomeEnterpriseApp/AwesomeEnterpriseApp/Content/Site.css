@@ -349,8 +349,9 @@ div#title
 {
     margin-left:30%;
     width:60%;
-    min-height:400px;
-    margin-top:-30%;
+    min-height:200px;
+    margin-top:0px;
+    margin-bottom:50px;
     background:#efefef;
     
 }
@@ -358,5 +359,10 @@ div#title
 #retInf p
 {
     margin-left:10px;
-    margin-top:10px;
+    margin-top:-100px;
 }
+
+#secondList
+{
+    display:none
+    }

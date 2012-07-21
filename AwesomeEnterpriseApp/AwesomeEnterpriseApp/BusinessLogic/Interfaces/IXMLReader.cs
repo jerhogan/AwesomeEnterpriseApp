@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using AwesomeEnterpriseApp.Models;
 
-namespace FilmLocnPrototype
+namespace AwesomeEnterpriseApp.BusinessLogic.Interfaces
 {
     interface IXMLReader
     {
-        List<FilmLocations> filmLocation();
-        void setSource(String xmlSource);
+        
+            List<FilmLocations> readAllFilms();
+            void setSource(String xmlSource);
+        
     }
 }

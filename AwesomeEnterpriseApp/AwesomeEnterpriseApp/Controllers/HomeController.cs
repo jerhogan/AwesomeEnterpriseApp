@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+//using System.Web.Mvc.Ajax;
 using AwesomeEnterpriseApp.BusinessLogic;
 using AwesomeEnterpriseApp.DataAccessLayer;
 using AwesomeEnterpriseApp.Models;
@@ -17,31 +18,23 @@ namespace AwesomeEnterpriseApp.Controllers
         {
             ViewData["Message"] = "Welcome to Awesome!";
 
-           // FilmLocations film ;
-              
-            List<FilmLocations> films;
-            //FilmLocations filmLoc = new filmTitle;
-            LocnXMLReader xmlObject = new LocnXMLReader();
-            xmlObject.setSource("https://nycopendata.socrata.com/download/qb3k-n8mm/application/xml");
-            films = xmlObject.readAllFilms();
-           // FilmLocations locations = xmlObject.readAllFilms();
-
-            
+            List<String> films = new APIReader().readAPI();
 
             List<SelectListItem> movies = new List<SelectListItem>();
             
            
-              foreach (FilmLocations movie in films)
+              foreach (String title in films)
               {
               
-               movies.Add(new SelectListItem { Text = movie.filmTitle });
+               movies.Add(new SelectListItem { Text = title });
 
                }
 
-                   
-                   /*    
-                       FilmLocations films = filmDAL.addBaseFilmLocation();
-                   foreach(film in films)
+
+              /* selectedFilmLocations selected = new selectedFilmLocations(); 
+                       
+                       
+                   foreach(Select in selected)
                        {
                       
                        movies.Add(new SelectListItem { Text = film });
@@ -66,7 +59,7 @@ namespace AwesomeEnterpriseApp.Controllers
             List<SelectListItem> radius = new List<SelectListItem>();
 
 
-            String [] radiusVals = { "100 meters", "200 meters", "300 meters", "400 meters", "500 meters" };
+            String [] radiusVals = { "1km", "2kms", "3kms", "4kms", "5kms" };
 
                 
                 
@@ -86,6 +79,37 @@ namespace AwesomeEnterpriseApp.Controllers
 
             return View();
         }
+
+        /*  public ActionResult GetItems() 
+          {
+                var list = new List<SelectListItem> 
+                {new SelectListItem 
+                  { Text = "not selected", Value = "" }
+                };            
+            
+              list.AddRange(filmLocations.GetAll().Select(o => new SelectListItem
+              {
+                  Text = o.Name,
+                  Value = o.Id.ToString(),
+                  Selected = o.Id == key
+              }));
+              return Json(list);
+        
+          } 
+       
+         public string UpdateForm(string textBox1)
+            {
+            if (textBox1 != "Enter text")
+            {
+            return "You entered: \"" + textBox1.ToString() + "\" at " +
+                  DateTime.Now.ToLongTimeString();
+            }
+
+      return String.Empty;
+  }
+       
+       
+         */
 
         public ActionResult About()
         {
