@@ -97,8 +97,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessLogic\Interfaces\IXMLReader.cs" />
-    <Compile Include="BusinessLogic\IXMLReader.cs" />
     <Compile Include="BusinessLogic\LocationCalculator.cs" />
+    <Compile Include="BusinessLogic\LocationFinder.cs" />
     <Compile Include="BusinessLogic\LocnXMLReader.cs" />
     <Compile Include="BusinessLogic\RestaurantFinder.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -118,9 +118,11 @@
     <Compile Include="Models\DB\RestaurantDB.cs" />
     <Compile Include="Models\FilmLocations.cs" />
     <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\MovieSpots.cs" />
     <Compile Include="Models\Point.cs" />
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\UI\IncomingRequestUI.cs" />
+    <Compile Include="Models\UI\LocationListUI.cs" />
     <Compile Include="Models\UI\selectedFilmLocationsUI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -164,6 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="bin\Debug\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

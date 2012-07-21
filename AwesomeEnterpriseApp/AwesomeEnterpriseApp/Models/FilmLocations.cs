@@ -16,6 +16,10 @@ namespace AwesomeEnterpriseApp.Models
         [Column(Name = "locations")]
         public List<Location> locations { get; set; }
 
+        public FilmLocations()
+        {
+        }
+
         public FilmLocations(string filmTitle, List<Location> locn)
         {
             this.filmTitle = filmTitle;

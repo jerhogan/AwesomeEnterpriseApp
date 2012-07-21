@@ -5,6 +5,8 @@ using System.Text;
 using System.Xml.Linq;
 using AwesomeEnterpriseApp.Models;
 using AwesomeEnterpriseApp.DataAccessLayer;
+using AwesomeEnterpriseApp.BusinessLogic;
+using AwesomeEnterpriseApp.BusinessLogic.Interfaces;
 
 namespace AwesomeEnterpriseApp.BusinessLogic
 {
