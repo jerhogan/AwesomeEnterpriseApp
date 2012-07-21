@@ -8,6 +8,6 @@ namespace AwesomeEnterpriseApp.Models.UI
     public class LocationListUI
     {
         public String filmName { get; set; }
-        public List<String> location { get; set; }
+        public List<String> locations { get; set; }
     }
 }

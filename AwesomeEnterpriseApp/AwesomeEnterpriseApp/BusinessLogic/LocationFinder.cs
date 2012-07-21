@@ -31,6 +31,9 @@ namespace AwesomeEnterpriseApp.BusinessLogic
                 }
             }
 
+            locations.filmName = filmName;
+            locations.locations = locationNames;
+
             return locations;
         }
 
