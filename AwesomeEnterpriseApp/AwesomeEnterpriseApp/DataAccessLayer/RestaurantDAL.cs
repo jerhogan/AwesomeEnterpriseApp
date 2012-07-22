@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using AwesomeEnterpriseApp.Models;
-using AwesomeEnterpriseApp.Models.DB;
 
 namespace AwesomeEnterpriseApp.DataAccessLayer
 {
     public class RestaurantDAL
     {
 
-        public RestaurantDB db = new RestaurantDB();
+        public AwesomeDB db = new AwesomeDB();
 
         public Restaurant findRestaurant(String xCoord, String yCoord)
         {

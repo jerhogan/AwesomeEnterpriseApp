@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using AwesomeEnterpriseApp.Models;
-using AwesomeEnterpriseApp.Models.DB;
 
 namespace AwesomeEnterpriseApp.DataAccessLayer
 {
     public class FilmLocationsDAL
     {
-        private RestaurantDB db = new RestaurantDB();
+        private AwesomeDB db = new AwesomeDB();
         private FilmLocations film; 
         
 
