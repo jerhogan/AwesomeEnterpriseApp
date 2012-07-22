@@ -23,7 +23,20 @@ namespace AwesomeEnterpriseApp.Tests.Controllers
 
             // Assert
             ViewDataDictionary viewData = result.ViewData;
-            Assert.AreEqual("Welcome to ASP.NET MVC!", viewData["Message"]);
+            Assert.AreEqual("Welcome to Awesome!", viewData["Message"]);
+
+            List<SelectListItem> flicks = (List <SelectListItem> )viewData["movieList"];
+            Assert.AreEqual(178, flicks.Count);
+            Assert.AreEqual("*batteries not included", flicks[0].Text);
+            Assert.AreEqual("12 Angry Men", flicks[1].Text);
+            Assert.AreEqual("15 Minutes", flicks[3].Text);
+            Assert.AreEqual("Die Hard: With a Vengeance", flicks[37].Text);
+            Assert.AreEqual("You've Got Mail", flicks[177].Text);
+
+            List<SelectListItem> locs = (List<SelectListItem>)viewData["locationList"];
+            Assert.AreEqual(1, locs.Count);
+            if (locs.Count > 0) 
+                Assert.AreEqual("E. 5th St.<br>East Village<br>Manhattan", locs[0].Text);
         }
 
         [TestMethod]
