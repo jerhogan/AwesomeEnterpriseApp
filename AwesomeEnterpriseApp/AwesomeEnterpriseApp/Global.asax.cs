@@ -42,7 +42,12 @@ namespace AwesomeEnterpriseApp
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "LocationFinder", action = "getLocationsForFilm", id = UrlParameter.Optional } // Parameter defaults
             );
-            
+
+            routes.MapRoute(
+                "RestaurantFinder", // Route name
+                "{controller}/{action}/{id}", // URL with parameters
+                new { controller = "RestaurantFinder", action = "getRestaurantsWithinRadius", id = UrlParameter.Optional } // Parameter defaults
+            );
             
         }
 

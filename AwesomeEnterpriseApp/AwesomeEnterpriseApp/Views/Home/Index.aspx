@@ -17,12 +17,7 @@
         </div>
 
 
-        
-
-
-
-
-
+  
         <!-- SECEOND LIST -->
         <div id="secondList">
          

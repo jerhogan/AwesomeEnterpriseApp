@@ -12,7 +12,10 @@
     <script src="<%= Url.Content("~/Scripts/secondListAjaxCall.js") %>" 
 		type="text/javascript"></script>
      
-    
+    <script src="<%= Url.Content("~/Scripts/finalSubmit.js") %>" 
+		type="text/javascript"></script>
+     
+
 </head>
 
 <body>

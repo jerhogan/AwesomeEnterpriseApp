@@ -100,11 +100,11 @@
     <Compile Include="BusinessLogic\Interfaces\IXMLReader.cs" />
     <Compile Include="BusinessLogic\LocationCalculator.cs" />
     <Compile Include="BusinessLogic\LocnXMLReader.cs" />
-    <Compile Include="BusinessLogic\RestaurantFinder.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationFinderController.cs" />
     <Compile Include="Controllers\RestaurantDetailsController.cs" />
+    <Compile Include="Controllers\RestaurantFinderController.cs" />
     <Compile Include="Controllers\RestaurantsController.cs" />
     <Compile Include="DataAccessLayer\AddressDAL.cs" />
     <Compile Include="DataAccessLayer\FilmLocationsDAL.cs" />
@@ -133,6 +133,7 @@
     <Content Include="obj\Debug\AwesomeEnterpriseApp.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\AwesomeEnterpriseApp.dll" />
     <Content Include="obj\Debug\AwesomeEnterpriseApp.pdb" />
+    <Content Include="Scripts\finalSubmit.js" />
     <Content Include="Scripts\secondListAjaxCall.js" />
     <Content Include="Views\RestaurantDetails\Index.ascx" />
     <Content Include="Views\RestaurantDetails\RestaurantDetails.aspx" />

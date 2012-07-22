@@ -3,7 +3,7 @@
 
     $("select#movieList").change(function () {
 
-       // alert("ok?");
+        // alert("ok?");
         $("#secondList").show();
 
 
@@ -17,13 +17,12 @@
             $.ajax({
                 type: 'POST',
                 url: '/LocationFinder/getStubData',
-               // dataType: 'xml',
+                // dataType: 'xml',
                 data: { filmName: filmName },
                 success: function (data) {
 
                     $('select#locationList').html('<option>' + data + '</option>');
-
-                },
+                                   },
 
                 error: function showError() {
                     alert("There has been an error!")
