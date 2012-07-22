@@ -51,10 +51,10 @@ namespace AwesomeEnterpriseApp.Controllers
              int index = movies.;
             */
              // List<Location> locations;
-            List<SelectListItem> locations2 = new List<SelectListItem>();
+         /*   List<SelectListItem> locations2 = new List<SelectListItem>();
 
                 locations2.Add(new SelectListItem { Text = "Filming location" });
-
+            */
 
             List<SelectListItem> radius = new List<SelectListItem>();
 
@@ -73,7 +73,7 @@ namespace AwesomeEnterpriseApp.Controllers
 
             ViewData["movieList"] = movies;
 
-            ViewData["locationList"] = locations2;
+            //ViewData["locationList"] = locations2;
 
             ViewData["radiusList"] = radius;
 

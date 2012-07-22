@@ -105,9 +105,16 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
             LocationDAL locationDAL = new LocationDAL();
             Location location = locationDAL.addLocation(locationName, xCoord, yCoord);
 
-            List<Location> locsInFilm = filmToModify.locations.ToList();
+            
+                List<Location> locsInFilm = new List<Location>();
 
-            locsInFilm.Add(location);
+           // if(locsInFilm != null){
+             //   locsInFilm = filmToModify.locations.ToList();
+
+            
+                locsInFilm.Add(location);
+            
+            //}
 
             db.SaveChanges();
         }

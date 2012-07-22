@@ -31,12 +31,19 @@ namespace AwesomeEnterpriseApp
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
 
-          /*  routes.MapRoute(
+            routes.MapRoute(
                 "RestaurantReg", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+                new { controller = "RestaurantDetails", action = "", id = UrlParameter.Optional } // Parameter defaults
             );
-            */
+
+            routes.MapRoute(
+                "LocationFinder", // Route name
+                "{controller}/{action}/{id}", // URL with parameters
+                new { controller = "LocationFinder", action = "getLocationsForFilm", id = UrlParameter.Optional } // Parameter defaults
+            );
+            
+            
         }
 
         protected void Application_Start()
