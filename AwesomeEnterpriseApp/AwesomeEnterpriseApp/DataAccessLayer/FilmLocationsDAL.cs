@@ -95,6 +95,7 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
             {
                 FilmLocations newFilm = addBaseFilmLocation(filmName);
                 createAndAddLocation(locationName, xCoord, yCoord, newFilm);
+                filmToModify = newFilm;
             }
             return filmToModify; 
         }
@@ -112,6 +113,10 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
 
             
                 locsInFilm.Add(location);
+
+                if (filmToModify.locations == null)
+                    filmToModify.locations = new List<Location>();
+                filmToModify.locations.Add(location);
             
             //}
 
