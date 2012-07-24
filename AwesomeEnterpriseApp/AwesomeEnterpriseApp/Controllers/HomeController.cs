@@ -18,7 +18,26 @@ namespace AwesomeEnterpriseApp.Controllers
         {
             ViewData["Message"] = "Welcome to Awesome!";
 
-            List<String> films = new APIReader().readAPI();
+            Context db = new Context();
+            db.Database.Delete();
+            db.Database.Create();
+
+            new APIReader().readAPI();
+
+            FilmLocationsDAL dal = new FilmLocationsDAL();
+
+            List<FilmLocations> filmLocations = dal.findAllFilms();
+
+            List<String> films = new List<string>();
+
+            List<Location> locs = new List<Location>();
+
+            for (int i = 0; i < filmLocations.Count(); i++)
+            {
+                films.Add(filmLocations[i].filmTitle);
+                locs = filmLocations[i].locations;
+                int x = 1;
+            }
 
             List<SelectListItem> movies = new List<SelectListItem>();
             

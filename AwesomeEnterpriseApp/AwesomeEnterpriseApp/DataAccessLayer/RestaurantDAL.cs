@@ -9,7 +9,7 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
     public class RestaurantDAL
     {
 
-        public AwesomeDB db = new AwesomeDB();
+        public Context db = new Context();
 
         public Restaurant findRestaurant(String xCoord, String yCoord)
         {
