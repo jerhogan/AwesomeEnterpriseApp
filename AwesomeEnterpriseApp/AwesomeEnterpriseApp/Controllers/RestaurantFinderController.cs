@@ -12,7 +12,7 @@ namespace AwesomeEnterpriseApp.Controllers
 {
     public class RestaurantFinder : Controller
     {
-        // Instantiate DALs 
+        /* Instantiate DALs 
             private RestaurantDAL rdal = new RestaurantDAL();
             private FilmLocationsDAL fdal = new FilmLocationsDAL();
             private List<Restaurant> restaurantsWithinRadius = null;
@@ -26,7 +26,18 @@ namespace AwesomeEnterpriseApp.Controllers
             return returnableModels;
 
         }
+        */
 
+        
+
+        public String GetMessage(String radius)
+        {
+            return "Info" + radius;
+
+           
+        }
+
+/*
         private static List<PresentedRestaurantUI> convertToViewModel(List<Restaurant> restaurantsWithinRadius)
         {
             List<PresentedRestaurantUI> returnableModels = new List<PresentedRestaurantUI>(); 
@@ -98,5 +109,6 @@ namespace AwesomeEnterpriseApp.Controllers
             //use finder to return list of viewmodels
             List<PresentedRestaurantUI> restaurantsInRadius = finder.getRestaurantsWithinRadius(request);
         }
+ */
     }
 }

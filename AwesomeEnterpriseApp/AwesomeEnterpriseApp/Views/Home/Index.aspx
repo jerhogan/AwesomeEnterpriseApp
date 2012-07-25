@@ -7,8 +7,8 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <form id="form1" runat="server">
-    <h2><%: ViewData["Message"] %></h2>
-    <div>
+    <h2></h2>
+    <div id="lists">
         <div id="firstList">
         <h6>Choose your movie:
         </h6>
@@ -30,9 +30,12 @@
         <h6>Choose restaurant proximity:</h6><br />
         <%= Html.DropDownList("radiusList") %>
         <br/>
-        <input type="submit" value="Submit" />
 
-        <div id="retInf"><p>Your selection of restaurants</p>
+       <br />
+        <button name="send" id="send">Check to send</button>
+
+        <h4>Your selection of restaurants:</h4>
+        <div id="retInf"><p>Something</p>
         </div>
 
     </div>

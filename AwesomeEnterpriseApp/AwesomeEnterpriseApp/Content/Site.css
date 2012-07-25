@@ -345,24 +345,36 @@ div#title
 
 /* CUSTOM STYLES */
 
+#lists{width:90%;margin-left:5%}
+
 #retInf
 {
-    margin-left:30%;
-    width:60%;
+    margin-left:5%;
+    margin-top:50px;
+    width:90%;
     min-height:200px;
     margin-top:0px;
     margin-bottom:50px;
     background:#efefef;
+    display:none
     
 }
 
 #retInf p
 {
-    margin-left:10px;
-    margin-top:-100px;
+    margin-left:20px;
+    margin-top:20px;
 }
+
+#retinf p span{}
 
 #secondList
 {
     display:none
     }
+    
+    p#send{display:block;background:#ccc;padding:10px}
+   p#send:hover{cursor:pointer}
+   
+   
+   .radio{float:left;margin-right:30px}

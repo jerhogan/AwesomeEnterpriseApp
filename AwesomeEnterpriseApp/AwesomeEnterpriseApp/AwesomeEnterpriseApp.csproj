@@ -99,7 +99,9 @@
     <Compile Include="BusinessLogic\APIReader.cs" />
     <Compile Include="BusinessLogic\Interfaces\IXMLReader.cs" />
     <Compile Include="BusinessLogic\LocationCalculator.cs" />
+    <Compile Include="BusinessLogic\LocationFinder.cs" />
     <Compile Include="BusinessLogic\LocnXMLReader.cs" />
+    <Compile Include="BusinessLogic\RestaurantFinder.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationFinderController.cs" />

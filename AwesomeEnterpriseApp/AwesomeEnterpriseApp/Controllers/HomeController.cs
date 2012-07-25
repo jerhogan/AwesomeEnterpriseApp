@@ -80,37 +80,7 @@ namespace AwesomeEnterpriseApp.Controllers
             return View();
         }
 
-        /*  public ActionResult GetItems() 
-          {
-                var list = new List<SelectListItem> 
-                {new SelectListItem 
-                  { Text = "not selected", Value = "" }
-                };            
-            
-              list.AddRange(filmLocations.GetAll().Select(o => new SelectListItem
-              {
-                  Text = o.Name,
-                  Value = o.Id.ToString(),
-                  Selected = o.Id == key
-              }));
-              return Json(list);
-        
-          } 
        
-         public string UpdateForm(string textBox1)
-            {
-            if (textBox1 != "Enter text")
-            {
-            return "You entered: \"" + textBox1.ToString() + "\" at " +
-                  DateTime.Now.ToLongTimeString();
-            }
-
-      return String.Empty;
-  }
-       
-       
-         */
-
         public ActionResult About()
         {
             return View();

@@ -5,6 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="registerContent" ContentPlaceHolderID="MainContent" runat="server">
+<div id="genForm">
     <h2>Create a New Account</h2>
     <p>
         Use the form below to create a new account. 
@@ -57,4 +58,66 @@
             </fieldset>
         </div>
     <% } %>
+
+    </div>
+
+    <div id="restForm">
+     <h2>Set up your restaurant profile:</h2>
+    <p>
+        Passwords are required to be a minimum of <%: ViewData["PasswordLength"] %> characters in length.
+    </p>
+
+    <% using (Html.BeginForm()) { %>
+        <%: Html.ValidationSummary(true, "Account creation was unsuccessful. Please correct the errors and try again.") %>
+        <div>
+            <fieldset>
+                <legend>Restaurant Infromtion</legend>
+                
+                <div class="editor-label">
+                    <label>Restaurant name</label>
+                   
+                </div>
+                <div class="editor-field">
+                    <input type="text" name="name"/>
+                </div>
+                
+                <div class="editor-label">
+                   <label>Restaurant cuisine</label>
+                </div>
+                <div class="editor-field">
+                    <select name="cuisine">
+                        <option>Italian</option>
+                        <option>Mexican</option>
+                        <option>Turkish</option>
+                        <option>Chinese</option>
+                        <option>Russian</option>
+                        <option>Carribean</option>
+                        
+                    </select>
+                </div>
+                
+                <div class="editor-label">
+                    <label>Take Away -------------------------------> Fine Dining</label>
+                </div>
+                <div class="editor-field">
+                   <input class="radio" type="radio" name="fancy" value="1" />
+                    <input class="radio" type="radio" name="fancy" value="2" />
+                     <input class="radio" type="radio" name="fancy" value="3" />
+                      <input class="radio" type="radio" name="fancy" value="4" />
+                       <input type="radio" class="radio" name="fancy" value="5" />
+                </div>
+                
+                <div class="editor-label">
+                    <label>Restaurant website</label>
+                </div>
+                <div class="editor-field">
+                    <input type="text" name="website" />
+                </div>
+                                    <p>
+                    <input type="submit" value="Register" />
+                </p>
+            </fieldset>
+        </div>
+    <% } %>
+    </div>
 </asp:Content>
