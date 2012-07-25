@@ -53,7 +53,7 @@
                 </div>
                 
                 <p>
-                    <input type="submit" value="Register" />
+                    <input type="submit" value="Save" />
                 </p>
             </fieldset>
         </div>
@@ -64,7 +64,7 @@
     <div id="restForm">
      <h2>Set up your restaurant profile:</h2>
     <p>
-        Passwords are required to be a minimum of <%: ViewData["PasswordLength"] %> characters in length.
+        
     </p>
 
     <% using (Html.BeginForm()) { %>
@@ -113,7 +113,17 @@
                 <div class="editor-field">
                     <input type="text" name="website" />
                 </div>
-                                    <p>
+
+                <div class="editor-label">
+                    <label>Restaurant address</label>
+                </div>
+                <div class="editor-field">
+                    <input type="text" name="line1" />
+                    <input type="text" name="line2" />
+                    <input type="text" name="line3" />
+
+                </div>
+                <p>
                     <input type="submit" value="Register" />
                 </p>
             </fieldset>

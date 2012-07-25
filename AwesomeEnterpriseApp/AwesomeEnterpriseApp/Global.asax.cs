@@ -40,13 +40,13 @@ namespace AwesomeEnterpriseApp
             routes.MapRoute(
                 "LocationFinder", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "LocationFinder", String = "getStubData", id = UrlParameter.Optional } // Parameter defaults
+                new { controller = "LocationFinder", action = "getStubData", id = UrlParameter.Optional } // Parameter defaults
             );
 
             routes.MapRoute(
                 "RestaurantFinder", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "RestaurantFinder", String = "GetMessage", id = UrlParameter.Optional } // Parameter defaults
+                new { controller = "RestaurantFinder", action = "GetMessage", id = UrlParameter.Optional } // Parameter defaults
             );
             
         }

@@ -21,21 +21,27 @@
         <!-- SECEOND LIST -->
         <div id="secondList">
          
-        <h6>Choose filming location:</h6><br />
+        <h6>Choose filming location:</h6>
         <select id="locationList" name="locationList"></select>
         </div>
         
+        <br/>
 
-
-        <h6>Choose restaurant proximity:</h6><br />
-        <%= Html.DropDownList("radiusList") %>
+        <h6>Choose restaurant proximity:</h6>
+        <select id="radiusList" name="radiusList">
+            <option>1km</option>
+            <option>2km</option>
+            <option>3km</option>
+            <option>4km</option>
+            <option>5km</option>
+        </select>
         <br/>
 
        <br />
-        <button name="send" id="send">Check to send</button>
+        
 
         <h4>Your selection of restaurants:</h4>
-        <div id="retInf"><p>Something</p>
+        <div id="retInf"><p></p>
         </div>
 
     </div>

@@ -36,7 +36,7 @@ namespace AwesomeEnterpriseApp.Controllers
             {
                 films.Add(filmLocations[i].filmTitle);
                 locs = filmLocations[i].locations;
-                int x = 1;
+                //int x = 1;
             }
 
             List<SelectListItem> movies = new List<SelectListItem>();
@@ -70,31 +70,31 @@ namespace AwesomeEnterpriseApp.Controllers
              int index = movies.;
             */
              // List<Location> locations;
-         /*   List<SelectListItem> locations2 = new List<SelectListItem>();
+              /*   List<SelectListItem> locations2 = new List<SelectListItem>();
 
-                locations2.Add(new SelectListItem { Text = "Filming location" });
-            */
+                     locations2.Add(new SelectListItem { Text = "Filming location" });
+          
 
-            List<SelectListItem> radius = new List<SelectListItem>();
+                 List<SelectListItem> radius = new List<SelectListItem>();
 
 
-            String [] radiusVals = { "1km", "2kms", "3kms", "4kms", "5kms" };
+                 String [] radiusVals = { "1km", "2kms", "3kms", "4kms", "5kms" };
 
                 
                 
-                foreach(String radiusVal in radiusVals)
-                {
-                    radius.Add(new SelectListItem { Text = radiusVal });
-                }
+                     foreach(String radiusVal in radiusVals)
+                     {
+                         radius.Add(new SelectListItem { Text = radiusVal });
+                     }
                 
-                
+                   */
 
 
-            ViewData["movieList"] = movies;
+              ViewData["movieList"] = movies;
 
             //ViewData["locationList"] = locations2;
 
-            ViewData["radiusList"] = radius;
+           // ViewData["radiusList"] = radius;
 
             return View();
         }

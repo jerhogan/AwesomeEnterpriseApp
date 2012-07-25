@@ -34,34 +34,36 @@
 
 
 
-    $('button#send').click(function () {
+    $('select#radiusList').change(function () {
+
+        if ($('select#radiusList').children(":selected")) {
+
+            var radius = $('select#radiusList').children(':selected').html();
+            alert(radius);
 
 
+            $.ajax({
+                type: 'POST',
+                url: '/RestaurantFinder/GetMessage/',
+                // dataType: 'xml',
+                data: { radius: radius },
+                success: function (result) {
+                    // $('div#retInf p').empty();
+                    //if (data != null) {
+                        $('#retInf').show();
+                        $('#retInf').html("<h5>" + result + "</h5>");
+                   // }
+                    //} else {alert('Error in retrieving data!') }
 
-        var radius = $('select#radiusList').children(':selected').html();
-        alert(radius);
+                },
 
-
-        $.ajax({
-            type: 'POST',
-            url: '/RestaurantFinder/GetMessage/',
-            // dataType: 'xml',
-            data: {radius:radius},
-            success: function (data) {
-                // $('div#retInf p').empty();
-                if (data != null) {
-                    $('#retInf').show();
-                    $('#retInf').html("<h5>"+data+"</h5>");
+                error: function showError() {
+                    alert("There has been an error!")
                 }
-                //} else {alert('Error in retrieving data!') }
 
-            },
+            })
 
-            error: function showError() {
-                alert("There has been an error!")
-            }
-
-        })
+        }
     });
     //});
     //return false;
