@@ -4,36 +4,42 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AwesomeEnterpriseApp.Models;
+
 
 namespace AwesomeEnterpriseApp.Controllers
-{
+{   //URI /api/restaurants
     public class RestaurantsController : ApiController
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
+        static List< Restaurant> _restaurants = InitRestaurants();
+        private static List<Restaurant> InitRestaurants()
         {
-            return new string[] { "value1", "value2" };
+           // throw new NotImplementedException();
+            var ret = new List<Restaurant>();
+            restaurantsWithinRadius = new List<Restaurant>();
+
+            return restaurantsWithinRadius;
+        }
+        public IEnumerable<Restaurant> Get()
+        {
+            return _restaurants;
         }
 
-        // GET api/<controller>/5
-        public string Get(int id)
-        {
-            return "value";
-        }
 
-        // POST api/<controller>
-        public void Post(string value)
-        {
-        }
-
-        // PUT api/<controller>/5
-        public void Put(int id, string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
-        }
+        public static List<Restaurant> restaurantsWithinRadius { get; set; }
     }
+
+    public class Restaurant
+    {
+       
+        public int Id { get; set; }       
+        public String name { get; set; }
+        public int cuisine { get; set; }
+        public int fanciness { get; set; }
+        public String websiteUrl { get; set; }
+       // public Address address { get; set; }
+       // public Point point { get; set; }
+    }
+
+
 }
