@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data;
 using AwesomeEnterpriseApp.Models;
 
 namespace AwesomeEnterpriseApp.DataAccessLayer
 {
     public class FilmLocationsDAL
     {
-        private AwesomeDB db = new AwesomeDB();
-        private FilmLocations film; 
-        
+        private Context db = new Context();
+
 
         public FilmLocations findFilmLocationByID(int idFilmLocation)
         {
+
             List<FilmLocations> locs = null;
 
             locs = db.filmLocations.ToList();
@@ -64,6 +65,15 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
             return locs;
         }
 
+        public List<FilmLocations> findAllFilms()
+        {
+            List<FilmLocations> films = new List<FilmLocations>();
+
+            films = db.filmLocations.ToList();
+
+            return films;
+        }
+
         // Create a base film object, add locations after:
         // Sample Code:
         /*
@@ -73,11 +83,18 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
          */
         public FilmLocations addBaseFilmLocation(string filmTitle)
         {
+            FilmLocations film = new FilmLocations();
+
             List<Location> locations = new List<Location>();
 
+            //Location location = new Location("L", new Point(1, 2));
+            //locations.Add(location);
+            
             film = new FilmLocations(filmTitle, locations);
 
             db.filmLocations.Add(film);
+
+            db.SaveChanges();
 
             return film;
         }
@@ -85,30 +102,30 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
         public FilmLocations addLocationToFilm(string filmName, string locationName, string xCoord, string yCoord)
         {
             FilmLocations filmToModify = findFilmLocationByName(filmName);
+            List<Location> locsInFilm = null;
 
             if (filmToModify != null)
             {
-                createAndAddLocation(locationName, xCoord, yCoord, filmToModify);
+                Location location = new Location(locationName, new Point(xCoord, yCoord));
 
+                if (filmToModify.locations != null)
+                    locsInFilm = filmToModify.locations.ToList();
+                else
+                    locsInFilm = new List<Location>();
+
+                locsInFilm.Add(location);
+
+                filmToModify.locations = locsInFilm;
             }
-            else
-            {
-                FilmLocations newFilm = addBaseFilmLocation(filmName);
-                createAndAddLocation(locationName, xCoord, yCoord, newFilm);
-            }
-            return filmToModify; 
-        }
+            //locsInFilm = new List<Location>();
+            //filmToModify.locations = locsInFilm;
 
-        private void createAndAddLocation(string locationName, string xCoord, string yCoord, FilmLocations filmToModify)
-        {
-            LocationDAL locationDAL = new LocationDAL();
-            Location location = locationDAL.addLocation(locationName, xCoord, yCoord);
-
-            List<Location> locsInFilm = filmToModify.locations.ToList();
-
-            locsInFilm.Add(location);
-
+            db.Entry(filmToModify).State = EntityState.Modified;
             db.SaveChanges();
+
+            FilmLocations x = findFilmLocationByName(filmName);
+
+            return filmToModify;
         }
 
         public FilmLocations removeLocationFromFilm(string filmName, string locationName)
@@ -136,7 +153,7 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
 
             }
 
-            return filmToModify; 
+            return filmToModify;
         }
 
         public Boolean deleteFilmLocation(int idFilmLocation)

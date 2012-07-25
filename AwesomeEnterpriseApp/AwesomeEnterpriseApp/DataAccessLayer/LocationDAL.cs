@@ -8,6 +8,8 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
 { 
     public class LocationDAL
     {
+        Context db = new Context();
+
         public Location findLocation(int idLocation)
         {
             return null;
@@ -19,6 +21,8 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
             Point point = pointDAL.addPoint(xCoord, yCoord);
 
             Location location = new Location(locationName, point);
+
+            db.locations.Add(location);
 
             return location;
         }

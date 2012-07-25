@@ -17,17 +17,12 @@
         </div>
 
 
-        
-
-
-
-
-
+  
         <!-- SECEOND LIST -->
         <div id="secondList">
          
         <h6>Choose filming location:</h6><br />
-        <%= Html.DropDownList("locationList") %>
+        <select id="locationList" name="locationList"></select>
         </div>
         
 
