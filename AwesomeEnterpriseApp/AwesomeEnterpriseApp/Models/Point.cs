@@ -16,10 +16,10 @@ namespace AwesomeEnterpriseApp.Models
         [Column(Name = "y")]
         public double y { get; set; }
 
-        public Point(double x, double y)
+        public Point(string x, string y)
         {
-            this.x = x;
-            this.y = y;
+            this.x = Convert.ToDouble(x);
+            this.y = Convert.ToDouble(y);
         }
 
 

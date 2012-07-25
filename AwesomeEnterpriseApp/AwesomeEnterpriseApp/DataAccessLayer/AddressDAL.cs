@@ -8,6 +8,8 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
 {
     public class AddressDAL
     {
+        Context db = new Context();
+
         public Address findAddress(int idAddress)
         { 
             return null;
@@ -15,6 +17,10 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
         public Address addAddress(String houseNumber, String street1, String street2, String zipCode, String city)
         {
             Address address = new Address(houseNumber, street1, street2, zipCode, city);
+
+            db.addresses.Add(address);
+
+
             return address;
         }
 

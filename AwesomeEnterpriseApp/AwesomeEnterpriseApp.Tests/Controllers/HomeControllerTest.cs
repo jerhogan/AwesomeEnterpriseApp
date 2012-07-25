@@ -33,10 +33,10 @@ namespace AwesomeEnterpriseApp.Tests.Controllers
             Assert.AreEqual("Die Hard: With a Vengeance", flicks[37].Text);
             Assert.AreEqual("You've Got Mail", flicks[177].Text);
 
-            List<SelectListItem> locs = (List<SelectListItem>)viewData["locationList"];
-            Assert.AreEqual(1, locs.Count);
-            if (locs.Count > 0) 
-                Assert.AreEqual("E. 5th St.<br>East Village<br>Manhattan", locs[0].Text);
+//            List<SelectListItem> locs = (List<SelectListItem>)viewData["locationList"];
+//            Assert.AreEqual(1, locs.Count);
+//            if (locs.Count > 0) 
+//                Assert.AreEqual("E. 5th St.<br>East Village<br>Manhattan", locs[0].Text);
         }
 
         [TestMethod]

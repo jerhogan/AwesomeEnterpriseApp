@@ -8,6 +8,8 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
 {
     public class PointDAL
     {
+        Context db = new Context();
+
         public Point findPoint(int idPoint)
         {
             return null;
@@ -18,10 +20,12 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
 
             if (xCoord != null && !xCoord.Equals("") && yCoord != null && !yCoord.Equals(""))
             {
-                double x = Convert.ToDouble(xCoord);
-                double y = Convert.ToDouble(yCoord);
-                point = new Point(x, y);
+                point = new Point(xCoord, yCoord);
             }
+
+            db.points.Add(point);
+
+
             return point; 
         }
 
