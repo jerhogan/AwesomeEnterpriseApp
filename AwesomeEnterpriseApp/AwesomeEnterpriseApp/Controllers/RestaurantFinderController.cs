@@ -12,8 +12,13 @@ namespace AwesomeEnterpriseApp.Controllers
 {
     public class RestaurantFinder : Controller
     {
-       
 
+        RestaurantFinder newRestObject = new RestaurantFinder();
+
+      //  newRestObject.getRestaurantsWithinRadius();
+
+        public List<Restaurant> newRestList;
+        
         
 
         public String GetMessage(String radius)

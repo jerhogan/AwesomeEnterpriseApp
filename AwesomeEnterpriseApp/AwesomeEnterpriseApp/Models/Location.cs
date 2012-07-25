@@ -16,6 +16,8 @@ namespace AwesomeEnterpriseApp.Models
         [Column(Name = "point")]
         public Point point { get; set; }
 
+        public Location() { }
+
         public Location(string locnText, Point point)
         {
             this.locnText = locnText;

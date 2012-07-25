@@ -35,8 +35,8 @@ namespace AwesomeEnterpriseApp.Controllers
             for (int i = 0; i < filmLocations.Count(); i++)
             {
                 films.Add(filmLocations[i].filmTitle);
-                locs = filmLocations[i].locations;
-                //int x = 1;
+                locs = filmLocations[i].locations.ToList();
+                int x = 1;
             }
 
             List<SelectListItem> movies = new List<SelectListItem>();
