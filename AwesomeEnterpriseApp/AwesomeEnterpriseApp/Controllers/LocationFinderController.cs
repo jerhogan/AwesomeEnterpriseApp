@@ -41,6 +41,8 @@ namespace AwesomeEnterpriseApp.Controllers
                 }
             }
 
+            locations = new LocationListUI();
+
             locations.filmName = filmName;
             locations.locations = locationNames;
             

@@ -86,15 +86,20 @@ namespace AwesomeEnterpriseApp.Tests
             expected.locations = new List<String>();
             expected.locations.Add ("New York County Courthouse<br>40 Foley Square<br>Lower Manhattan");
             actual = target.getLocationsForFilm(filmName);
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected.filmName, actual.filmName);
+            Assert.AreEqual(expected.locations.Count, 1);
+            Assert.AreEqual(expected.locations[0], actual.locations[0]);
+            
 
             filmName = "15 Minutes";
             expected = new LocationListUI();
             expected.filmName = filmName;
             expected.locations = new List<String>();
-            expected.locations.Add("E. 60-66th St.and Madison Ave.<br>Upper East Side<br>Manhattan");
+            expected.locations.Add("E. 60-66th St. and Madison Ave.<br>Upper East Side<br>Manhattan");
             actual = target.getLocationsForFilm(filmName);
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected.filmName, actual.filmName);
+            Assert.AreEqual(expected.locations.Count, 1);
+            Assert.AreEqual(expected.locations[0], actual.locations[0]);
 
             filmName = "25th Hour";
             expected = new LocationListUI();
@@ -103,7 +108,10 @@ namespace AwesomeEnterpriseApp.Tests
             expected.locations.Add("World Trade Center<br>Lower Manhattan");
             expected.locations.Add("Carl Schurz Park<br>Upper East Side<br>Manhattan");
             actual = target.getLocationsForFilm(filmName);
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected.filmName, actual.filmName);
+            Assert.AreEqual(expected.locations.Count, 2);
+            Assert.AreEqual(expected.locations[0], actual.locations[0]);
+            Assert.AreEqual(expected.locations[1], actual.locations[1]);
         }
     }
 }
