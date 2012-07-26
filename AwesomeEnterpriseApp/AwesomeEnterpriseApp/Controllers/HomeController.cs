@@ -16,11 +16,7 @@ namespace AwesomeEnterpriseApp.Controllers
     {
         public ActionResult Index()
         {
-            ViewData["Message"] = "Welcome to Awesome!";
-
-            Context db = new Context();
-            db.Database.Delete();
-            db.Database.Create();
+            ViewData["Message"] = "Welcome to an Awesome Enterprise App!";
 
             new APIReader().readAPI();
 
