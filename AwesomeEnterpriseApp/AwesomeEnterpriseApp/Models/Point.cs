@@ -16,6 +16,8 @@ namespace AwesomeEnterpriseApp.Models
         [Column(Name = "y")]
         public double y { get; set; }
 
+        public Point() { }
+
         public Point(string x, string y)
         {
             this.x = Convert.ToDouble(x);

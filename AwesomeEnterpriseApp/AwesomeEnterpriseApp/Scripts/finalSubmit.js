@@ -1,39 +1,34 @@
 ﻿$(document).ready(function () {
     // alert("ok?";
 
-    $('input[type="submit"]').change(function () {
+    $('button#send').click(function() {
 
-            
-            var filmName = $('select#movieList').children(":selected").html();
-
-            var Location = $('select#locationList').children(":selected").html();
-           
-            var Radius = $('select#Radius').children(":selected").html();
-
-            //alert(filmName + "," + Location + "," + Radius) ;
-
-            $.ajax({
-                type: 'POST',
-                url: '/RestaurantFinder/getRestaurantsWithinRadius',
-                // dataType: 'xml',
-                data: { filmName: filmName, location: Location, radius: Radius },
-                success: function (data) {
-                 if (data == null) {
-
-                    $('div#retInf').html(data);
-                } else {
-
-                    $('div#retInf').html('There are no restaurants reported in the area, sorry...');
-                }
+        var filmName = $('select#movieList').children(":selected").html();
+        alert(filmName);
+        var Location = $('select#locationList').children(':selected').html();
+        alert(Location);
+        var Radius = $('select#radiusList').children(':selected').html();
+        alert(Radius);
 
 
-                },
+        $.ajax({
+            type: 'POST',
+            url: '/RestaurantFinder/getMessage',
+            // dataType: 'xml',
+            data: { filmName: filmName, location: Location, radius: Radius },
+            success: function (data) {
+                // $('div#retInf p').empty();
+                $('div#retInf').html(data);
 
-                error: function showError() {
-                    alert("There has been an error!")
-                }
+                //} else {alert('Error in retrieving data!') }
 
-            })
-        
+            },
+
+            error: function showError() {
+                alert("There has been an error!")
+            }
+
+        })
     });
+
 });

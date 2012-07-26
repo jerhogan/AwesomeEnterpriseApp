@@ -14,7 +14,7 @@ namespace AwesomeEnterpriseApp.Models
         [Column(Name = "filmTitle")]
         public string filmTitle { get; set; }
         [Column(Name = "locations")]
-        public List<Location> locations { get; set; }
+        public virtual ICollection<Location> locations { get; set; }
 
         public FilmLocations()
         {

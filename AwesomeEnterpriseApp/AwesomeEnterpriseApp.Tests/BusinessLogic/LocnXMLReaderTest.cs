@@ -2,6 +2,9 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting.Web;
+using AwesomeEnterpriseApp.Models;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace AwesomeEnterpriseApp.Tests
 {
@@ -75,6 +78,11 @@ namespace AwesomeEnterpriseApp.Tests
         public void addEntryTest()
         {
             LocnXMLReader_Accessor target = new LocnXMLReader_Accessor();
+
+            Context db = new Context();
+            db.Database.Delete();
+            db.Database.Create();
+
             string filmName = "Die Hard";
             double latCoord = 30.5;
             double lngCoord = -70.25;
@@ -83,10 +91,12 @@ namespace AwesomeEnterpriseApp.Tests
             Assert.AreEqual(target.filmLocations.Count, 1);
             Assert.AreEqual(target.filmLocations[0].filmTitle, "Die Hard");
             Assert.AreEqual(target.filmLocations[0].locations.Count, 1);
-            Assert.AreEqual(target.filmLocations[0].locations[0].point.x, 30.5);
-            Assert.AreEqual(target.filmLocations[0].locations[0].point.y, -70.25);
-            Assert.AreEqual(target.filmLocations[0].locations[0].locnText, "Manhattan");
- 
+            foreach (Location currentLoc in target.filmLocations[0].locations)
+            {
+                Assert.AreEqual(currentLoc.locnText, "Manhattan");
+                Assert.AreEqual(currentLoc.point.x, 30.5);
+                Assert.AreEqual(currentLoc.point.y, -70.25);
+            }
             filmName = "Die Hard";
             latCoord = 25.5;
             lngCoord = -55.25;
@@ -95,12 +105,23 @@ namespace AwesomeEnterpriseApp.Tests
             Assert.AreEqual(target.filmLocations.Count, 1);
             Assert.AreEqual(target.filmLocations[0].filmTitle, "Die Hard");
             Assert.AreEqual(target.filmLocations[0].locations.Count, 2);
-            Assert.AreEqual(target.filmLocations[0].locations[0].point.x, 30.5);
-            Assert.AreEqual(target.filmLocations[0].locations[0].point.y, -70.25);
-            Assert.AreEqual(target.filmLocations[0].locations[0].locnText, "Manhattan");
-            Assert.AreEqual(target.filmLocations[0].locations[1].point.x, 25.5);
-            Assert.AreEqual(target.filmLocations[0].locations[1].point.y, -55.25);
-            Assert.AreEqual(target.filmLocations[0].locations[1].locnText, "Brooklyn");
+            foreach (Location currentLoc in target.filmLocations[0].locations)
+            {
+                if (currentLoc.locnText == "Manhattan")
+                {
+                    Assert.AreEqual(currentLoc.locnText, "Manhattan");
+                    Assert.AreEqual(currentLoc.point.x, 30.5);
+                    Assert.AreEqual(currentLoc.point.y, -70.25);
+                }
+                else if (currentLoc.locnText == "Brooklyn")
+                {
+                    Assert.AreEqual(currentLoc.locnText, "Brooklyn");
+                    Assert.AreEqual(currentLoc.point.x, 25.5);
+                    Assert.AreEqual(currentLoc.point.y, -55.25);
+                }
+                else
+                    Assert.Fail("Unexpected location in film " + currentLoc.locnText);
+            }
 
             filmName = "Die Hard 2";
             latCoord = 22.75;
@@ -110,9 +131,12 @@ namespace AwesomeEnterpriseApp.Tests
             Assert.AreEqual(target.filmLocations.Count, 2);
             Assert.AreEqual(target.filmLocations[1].filmTitle, "Die Hard 2");
             Assert.AreEqual(target.filmLocations[1].locations.Count, 1);
-            Assert.AreEqual(target.filmLocations[1].locations[0].point.x, 22.75);
-            Assert.AreEqual(target.filmLocations[1].locations[0].point.y, -66.66666666667);
-            Assert.AreEqual(target.filmLocations[1].locations[0].locnText, "Queens");
+            foreach (Location currentLoc in target.filmLocations[1].locations)
+            {
+                Assert.AreEqual(currentLoc.locnText, "Queens");
+                Assert.AreEqual(currentLoc.point.x, 22.75);
+                Assert.AreEqual(currentLoc.point.y, -66.66666666667);
+            }
         }
     }
 }

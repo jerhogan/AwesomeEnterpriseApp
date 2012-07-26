@@ -24,6 +24,7 @@ namespace AwesomeEnterpriseApp.Models
         [Column(Name = "point")]
         public Point point { get; set; }
 
+        public Restaurant() { }
 
         public Restaurant(String name, int cuisine, int fanciness, String websiteUrl, Address address, Point point)
         {

@@ -24,20 +24,7 @@ namespace AwesomeEnterpriseApp.Controllers
 
             new APIReader().readAPI();
 
-            FilmLocationsDAL dal = new FilmLocationsDAL();
-
-            List<FilmLocations> filmLocations = dal.findAllFilms();
-
-            List<String> films = new List<string>();
-
-            List<Location> locs = new List<Location>();
-
-            for (int i = 0; i < filmLocations.Count(); i++)
-            {
-                films.Add(filmLocations[i].filmTitle);
-                locs = filmLocations[i].locations;
-                int x = 1;
-            }
+            List<String> films = new LocationFinder().getAllFilmNames();
 
             List<SelectListItem> movies = new List<SelectListItem>();
             
@@ -70,66 +57,36 @@ namespace AwesomeEnterpriseApp.Controllers
              int index = movies.;
             */
              // List<Location> locations;
-         /*   List<SelectListItem> locations2 = new List<SelectListItem>();
+              /*   List<SelectListItem> locations2 = new List<SelectListItem>();
 
-                locations2.Add(new SelectListItem { Text = "Filming location" });
-            */
+                     locations2.Add(new SelectListItem { Text = "Filming location" });
+          
 
-            List<SelectListItem> radius = new List<SelectListItem>();
+                 List<SelectListItem> radius = new List<SelectListItem>();
 
 
-            String [] radiusVals = { "1km", "2kms", "3kms", "4kms", "5kms" };
+                 String [] radiusVals = { "1km", "2kms", "3kms", "4kms", "5kms" };
 
                 
                 
-                foreach(String radiusVal in radiusVals)
-                {
-                    radius.Add(new SelectListItem { Text = radiusVal });
-                }
+                     foreach(String radiusVal in radiusVals)
+                     {
+                         radius.Add(new SelectListItem { Text = radiusVal });
+                     }
                 
-                
+                   */
 
 
-            ViewData["movieList"] = movies;
+              ViewData["movieList"] = movies;
 
             //ViewData["locationList"] = locations2;
 
-            ViewData["radiusList"] = radius;
+           // ViewData["radiusList"] = radius;
 
             return View();
         }
 
-        /*  public ActionResult GetItems() 
-          {
-                var list = new List<SelectListItem> 
-                {new SelectListItem 
-                  { Text = "not selected", Value = "" }
-                };            
-            
-              list.AddRange(filmLocations.GetAll().Select(o => new SelectListItem
-              {
-                  Text = o.Name,
-                  Value = o.Id.ToString(),
-                  Selected = o.Id == key
-              }));
-              return Json(list);
-        
-          } 
        
-         public string UpdateForm(string textBox1)
-            {
-            if (textBox1 != "Enter text")
-            {
-            return "You entered: \"" + textBox1.ToString() + "\" at " +
-                  DateTime.Now.ToLongTimeString();
-            }
-
-      return String.Empty;
-  }
-       
-       
-         */
-
         public ActionResult About()
         {
             return View();

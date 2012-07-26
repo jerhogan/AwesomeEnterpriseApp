@@ -17,7 +17,7 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
 
             List<FilmLocations> locs = null;
 
-            locs = db.filmLocations.ToList();
+            locs = db.filmLocations.Include("locations.point").ToList();
 
             foreach (FilmLocations film in locs)
             {
@@ -34,7 +34,7 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
         {
             List<FilmLocations> locs = null;
 
-            locs = db.filmLocations.ToList();
+            locs = db.filmLocations.Include("locations.point").ToList();
 
             foreach (FilmLocations film in locs)
             {
@@ -52,7 +52,7 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
             List<FilmLocations> filmLocs = null;
             List<Location> locs = null;
 
-            filmLocs = db.filmLocations.ToList();
+            filmLocs = db.filmLocations.Include("locations.point").ToList();
 
             foreach (FilmLocations film in filmLocs)
             {
@@ -67,9 +67,10 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
 
         public List<FilmLocations> findAllFilms()
         {
+
             List<FilmLocations> films = new List<FilmLocations>();
 
-            films = db.filmLocations.ToList();
+            films = db.filmLocations.Include("locations.point").ToList();
 
             return films;
         }

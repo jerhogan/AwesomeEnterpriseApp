@@ -34,6 +34,11 @@ namespace AwesomeEnterpriseApp.BusinessLogic
                 foreach (Restaurant rest in restaurantsWithinRadius)
                 {
                     // Convert restaurant to viewmodel
+                    PresentedRestaurantUI NewRest = new PresentedRestaurantUI();
+                    //NewRest.address = rest.address;
+                    //NewRest.cuisine = rest.cuisine; 
+                    //NewRest.address = rest.address;
+
                 }
             }
 

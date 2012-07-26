@@ -18,7 +18,7 @@ namespace AwesomeEnterpriseApp.Controllers
 
         public String getStubData(String filmName)
         {
-           return filmName + " shot on 5th Avenue, Queens";
+            return filmName + " shot on 5th Avenue, Queens";
         }
 
 
@@ -40,6 +40,8 @@ namespace AwesomeEnterpriseApp.Controllers
                     locationNames.Add(allLocations[i].locnText);
                 }
             }
+
+            locations = new LocationListUI();
 
             locations.filmName = filmName;
             locations.locations = locationNames;

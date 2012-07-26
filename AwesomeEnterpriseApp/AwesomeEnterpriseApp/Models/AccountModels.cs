@@ -54,6 +54,7 @@ namespace AwesomeEnterpriseApp.Models
         [DisplayName("User name")]
         public string UserName { get; set; }
 
+        
         [Required]
         [DataType(DataType.EmailAddress)]
         [DisplayName("Email address")]

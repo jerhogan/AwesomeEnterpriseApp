@@ -22,6 +22,8 @@ namespace AwesomeEnterpriseApp.Models
         [Column(Name = "city")]
         public String city { get; set; }
 
+        public Address() { }
+
         public Address(String houseNumber, String street1, String street2, String zipCode, String city)
         {
             this.houseNumber = houseNumber;
