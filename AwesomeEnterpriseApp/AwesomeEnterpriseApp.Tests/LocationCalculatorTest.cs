@@ -90,17 +90,27 @@ namespace AwesomeEnterpriseApp.Tests
         // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
         // whether you are testing a page, web service, or a WCF service.
         [TestMethod()]
-        [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\Users\\Jack\\Git\\AwesomeEnterpriseApp\\AwesomeEnterpriseApp\\AwesomeEnterpriseApp", "/")]
-        [UrlToTest("http://localhost:54116/")]
+       // [HostType("ASP.NET")]
+       // [AspNetDevelopmentServerHost("C:\\Users\\Jack\\Git\\AwesomeEnterpriseApp\\AwesomeEnterpriseApp\\AwesomeEnterpriseApp", "/")]
+       // [UrlToTest("http://localhost:54116/")]
         public void isInsideRadiusTest()
         {
             LocationCalculator target = new LocationCalculator(); // TODO: Initialize to an appropriate value
-            bool expected = false; // TODO: Initialize to an appropriate value
-            bool actual;
+            double distance = 0.94;
+            // 49-51 W 46th St
+            target.xCentre = 40.756912;
+            target.yCentre = -73.980989;
+
+            // 4-42 W 58th St
+            target.xLocation = 40.764259;
+            target.yLocation = -73.975325;
+
+            target.radius = 1; //km
+
+            bool actual = target.isInsideRadius();
+            bool expected = true; 
             actual = target.isInsideRadius();
             Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
         /// <summary>
@@ -151,9 +161,9 @@ namespace AwesomeEnterpriseApp.Tests
         // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
         // whether you are testing a page, web service, or a WCF service.
         [TestMethod()]
-        [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\Users\\Jack\\Git\\AwesomeEnterpriseApp\\AwesomeEnterpriseApp\\AwesomeEnterpriseApp", "/")]
-        [UrlToTest("http://localhost:54116/")]
+       // [HostType("ASP.NET")]
+       // [AspNetDevelopmentServerHost("C:\\Users\\Jack\\Git\\AwesomeEnterpriseApp\\AwesomeEnterpriseApp\\AwesomeEnterpriseApp", "/")]
+       // [UrlToTest("http://localhost:54116/")]
         public void xCentreTest()
         {
             LocationCalculator target = new LocationCalculator(); // TODO: Initialize to an appropriate value
@@ -178,12 +188,8 @@ namespace AwesomeEnterpriseApp.Tests
         public void xLocationTest()
         {
             LocationCalculator target = new LocationCalculator(); // TODO: Initialize to an appropriate value
-            double expected = 0F; // TODO: Initialize to an appropriate value
-            double actual;
-            target.xLocation = expected;
-            actual = target.xLocation;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            Point expected = new Point("01", "02");
+            //target.
         }
 
         /// <summary>
