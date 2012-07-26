@@ -24,20 +24,7 @@ namespace AwesomeEnterpriseApp.Controllers
 
             new APIReader().readAPI();
 
-            FilmLocationsDAL dal = new FilmLocationsDAL();
-
-            List<FilmLocations> filmLocations = dal.findAllFilms();
-
-            List<String> films = new List<string>();
-
-            List<Location> locs = new List<Location>();
-
-            for (int i = 0; i < filmLocations.Count(); i++)
-            {
-                films.Add(filmLocations[i].filmTitle);
-                locs = filmLocations[i].locations.ToList();
-                int x = 1;
-            }
+            List<String> films = new LocationFinder().getAllFilmNames();
 
             List<SelectListItem> movies = new List<SelectListItem>();
             

@@ -25,6 +25,7 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
 
             db.points.Add(point);
 
+            db.SaveChanges();
 
             return point; 
         }

@@ -15,6 +15,24 @@ namespace AwesomeEnterpriseApp.BusinessLogic
 
         private FilmLocationsDAL fdal = new FilmLocationsDAL();
 
+        public List<String> getAllFilmNames()
+        {
+
+            List<String> filmNames = new List<string>();
+
+            List<FilmLocations> allFilms = fdal.findAllFilms();
+
+            if (allFilms != null && allFilms.Count > 0)
+            {
+                for (int i = 0; i < allFilms.Count; i++)
+                {
+                    filmNames.Add(allFilms[i].filmTitle);
+                }
+            }
+
+            return filmNames;
+        }
+
         public LocationListUI getLocationsForFilm(String filmName)
         {
             LocationListUI locations = null;
