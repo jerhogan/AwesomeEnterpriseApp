@@ -12,6 +12,7 @@ namespace AwesomeEnterpriseApp.BusinessLogic
 
     public class LocationFinder
     {
+        private List<String> allFilms = null;
 
         private FilmLocationsDAL fdal = new FilmLocationsDAL();
 
@@ -35,7 +36,7 @@ namespace AwesomeEnterpriseApp.BusinessLogic
 
         public LocationListUI getLocationsForFilm(String filmName)
         {
-            LocationListUI locations = null;
+            LocationListUI locations = new LocationListUI();
 
             List<String> locationNames = new List<string>();
 
@@ -55,5 +56,29 @@ namespace AwesomeEnterpriseApp.BusinessLogic
             return locations;
         }
 
+
+        internal bool locationDoesNotExist(String filmName, String locationName)
+        {
+            LocationListUI allLocations = getLocationsForFilm(filmName);
+            foreach (String locName in allLocations.locations)
+            {
+                if (locName.Equals(locationName))
+                    return false;
+            }
+            return true;
+
+        }
+
+        internal bool filmDoesNotExist(String filmName)
+        {
+            // Get the complete collection of current films on first run and save to data member
+            if (allFilms == null)
+                allFilms = getAllFilmNames();
+
+            // Query list for film
+            if (allFilms != null && allFilms.Contains(filmName))
+                return false;
+            return true;
+        }
     }
 }

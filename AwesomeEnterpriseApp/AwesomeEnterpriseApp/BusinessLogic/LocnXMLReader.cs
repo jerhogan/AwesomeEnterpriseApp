@@ -12,6 +12,16 @@ namespace AwesomeEnterpriseApp.BusinessLogic
 {
     public class LocnXMLReader : IXMLReader
     {
+        private List<FilmLocations> filmLocations = new List<FilmLocations>();
+
+        private FilmLocationsDAL filmDAL = new FilmLocationsDAL();
+
+        private String xmlSourceName = "";
+
+        static int numFilms = 0;
+
+        private LocationFinder finder = new LocationFinder();
+
         public void setSource(String xmlSource)
         {
             this.xmlSourceName = xmlSource;
@@ -27,14 +37,6 @@ namespace AwesomeEnterpriseApp.BusinessLogic
         {
        
         }
-
-        private List<FilmLocations> filmLocations = new List<FilmLocations>();
-
-        private FilmLocationsDAL filmDAL = new FilmLocationsDAL();
-
-        private String xmlSourceName = "";
-
-        static int numFilms = 0;
 
         private void readXML()
         {
@@ -159,7 +161,7 @@ namespace AwesomeEnterpriseApp.BusinessLogic
                 {
                     newFilm = false;
                 }
-            if (newFilm)
+            if (newFilm && filmDoesNotExist(filmName))
             {
                 numFilms++;
                 filmLoc = filmDAL.addBaseFilmLocation(filmName);
@@ -172,8 +174,11 @@ namespace AwesomeEnterpriseApp.BusinessLogic
             }
             else
             {
-                filmLoc = filmLocations[numFilms - 1];
-                filmDAL.addLocationToFilm(filmLoc.filmTitle, locnDisplayText, latCoord.ToString(), lngCoord.ToString());
+                if (locationDoesNotExist(filmName, locnDisplayText))
+                {
+                    filmLoc = filmLocations[numFilms - 1];
+                    filmDAL.addLocationToFilm(filmLoc.filmTitle, locnDisplayText, latCoord.ToString(), lngCoord.ToString());
+                }
             }
 
             //int numLocns = filmLoc.locn.Count;
@@ -183,6 +188,16 @@ namespace AwesomeEnterpriseApp.BusinessLogic
             //locn.latCoord = latCoord;
             //locn.lngCoord = lngCoord;
             //filmLoc.locations.Add(locn);
+        }
+
+        private bool locationDoesNotExist(String filmName, String locationName)
+        {
+            return finder.locationDoesNotExist(filmName, locationName);
+        }
+
+        private bool filmDoesNotExist(String filmName)
+        {
+            return finder.filmDoesNotExist(filmName);
         }
     }
 }

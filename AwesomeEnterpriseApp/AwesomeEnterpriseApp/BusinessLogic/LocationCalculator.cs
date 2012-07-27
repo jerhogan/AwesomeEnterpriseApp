@@ -36,8 +36,8 @@ namespace AwesomeEnterpriseApp.BusinessLogic
         {
             
             double xDiff = (xCentre - xLocation) * 110.54;  //Lat
-            // Longitude is calculated by latitude, not by the lat of NY, leaving  app open to further cities
-            double yDiff = (yCentre - yLocation) * (111.320 * Math.Cos(xCentre * 110.54));  //Long
+            // Longitude is calculated by latitude, not by specifying the lng of NY, leaving  app open to further cities
+            double yDiff = (yCentre - yLocation) * (111.320 * Math.Cos(xLocation * 110.54));  //Long
 
             double distance = Math.Sqrt((xDiff * xDiff) + (yDiff * yDiff));
 
@@ -50,5 +50,7 @@ namespace AwesomeEnterpriseApp.BusinessLogic
             }
             return false;
         }
+
+
     }
 }
