@@ -46,50 +46,15 @@ namespace AwesomeEnterpriseApp.Controllers
 
                }
 
+            //return allLocs.ToArray();
 
-              /* selectedFilmLocations selected = new selectedFilmLocations(); 
-                       
-                       
-                   foreach(Select in selected)
-                       {
-                      
-                       movies.Add(new SelectListItem { Text = film });
-
-                        }
-                   
-
-            public int getSelectedItemId()
-            {
-                int index = ;
-                return index = null;
-            }
-
-             int index = movies.;
-            */
-             // List<Location> locations;
-              /*   List<SelectListItem> locations2 = new List<SelectListItem>();
-
-                     locations2.Add(new SelectListItem { Text = "Filming location" });
-          
-
-                 List<SelectListItem> radius = new List<SelectListItem>();
-
-
-                 String [] radiusVals = { "1km", "2kms", "3kms", "4kms", "5kms" };
-
-                
-                
-                     foreach(String radiusVal in radiusVals)
-                     {
-                         radius.Add(new SelectListItem { Text = radiusVal });
-                     }
-                
-                   */
-
+           
 
               ViewData["movieList"] = movies;
+             
+        
 
-            //ViewData["locationList"] = locations2;
+           // ViewData["locationList"] = locations;
 
            // ViewData["radiusList"] = radius;
 

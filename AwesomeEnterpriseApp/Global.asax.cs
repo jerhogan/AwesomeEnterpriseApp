@@ -40,7 +40,7 @@ namespace AwesomeEnterpriseApp
             routes.MapRoute(
                 "LocationFinder", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "LocationFinder", action = "getStubData", id = UrlParameter.Optional } // Parameter defaults
+                new { controller = "LocationFinder", action = "getSecondList", id = UrlParameter.Optional } // Parameter defaults
             );
 
             routes.MapRoute(

@@ -6,7 +6,8 @@ using AwesomeEnterpriseApp.DataAccessLayer;
 using AwesomeEnterpriseApp.Models.UI;
 using AwesomeEnterpriseApp.Models;
 using System.Web.Mvc;
-
+using AwesomeEnterpriseApp.BusinessLogic;
+//using System.Web.Helpers;
 
 namespace AwesomeEnterpriseApp.Controllers
 {
@@ -16,12 +17,47 @@ namespace AwesomeEnterpriseApp.Controllers
 
         private FilmLocationsDAL fdal = new FilmLocationsDAL();
 
-        public String getStubData(String filmName)
+     /*   public String getStubData(String filmName)
         {
             return filmName + " shot on 5th Avenue, Queens";
+        } */
+
+         //public String[] getSecondList(String filmName)
+        public ActionResult getSecondList(String filmName)
+        {
+            List<String> allLocs = new List<string>();
+            LocationFinder finder = new LocationFinder();
+            List<SelectListItem> Locs = new List<SelectListItem>();
+            LocationListUI locationsViewModel = finder.getLocationsForFilm(filmName);
+
+            foreach (String loc in locationsViewModel.locations)
+            {
+                Locs.Add(new SelectListItem { Text = loc });
+            }
+
+           /* foreach (String title in films)
+            {
+
+                movies.Add(new SelectListItem { Text = title });
+
+            }*/
+
+           // return allLocs.ToArray();
+
+
+
+            ViewData["locationList"] = Locs;
+
+            return View();
+
         }
 
+        private void Add(SelectListItem selectListItem)
+        {
+            throw new NotImplementedException();
+        }
 
+       
 
         public LocationListUI getLocationsForFilm(String filmName)
         {
@@ -47,7 +83,7 @@ namespace AwesomeEnterpriseApp.Controllers
             locations.locations = locationNames;
             
             return locations;
-        }
+        } 
 
     }
 }
