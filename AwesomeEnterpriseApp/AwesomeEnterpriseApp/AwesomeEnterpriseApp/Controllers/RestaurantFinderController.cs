@@ -29,5 +29,7 @@ namespace AwesomeEnterpriseApp.Controllers
         }
 
 
+
+        public static object allRestaurants { get; set; }
     }
 }

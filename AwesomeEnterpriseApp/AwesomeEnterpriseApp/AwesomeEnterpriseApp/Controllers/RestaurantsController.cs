@@ -8,43 +8,71 @@ using AwesomeEnterpriseApp.Models;
 using AwesomeEnterpriseApp;
 using AwesomeEnterpriseApp.Models.UI;
 using AwesomeEnterpriseApp.BusinessLogic;
-
+using AwesomeEnterpriseApp.DataAccessLayer;
 
 
 
 namespace AwesomeEnterpriseApp.Controllers
-{   //URI /api/restaurants
+{
     public class RestaurantsController : ApiController
     {
-        static List<Restaurant> _restaurants = InitRestaurants();
-        private static List<Restaurant> InitRestaurants()
+        
+        static List<Restaurant> _restaurantsWithinRadius = InitRestaurants();
+
+        private static List<Restaurant>  InitRestaurants()
         {
             // throw new NotImplementedException();
-            var ret = new List<Restaurant>();
-            restaurantsWithinRadius = new List<Restaurant>();
+            var ret = new List<Restaurant>();        
+            ret.Add(new Restaurant());
 
-            return restaurantsWithinRadius;
+
+            // AwesomeEnterpriseApp.BusinessLogic.RestaurantFinder().getAllRestaurants();
+            
+
+            return ret;
         }
         public IEnumerable<Restaurant> Get()
         {
-            return _restaurants;
+            //InitRestaurants();
+            return _restaurantsWithinRadius;
         }
+        //// GET api/<controller>
+        //public IEnumerable<string> Get()
+        //{
+        //    return new string[] { "value1", "value2" };
+        //}
+
+        //// GET api/<controller>/5
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
+
+        //// POST api/<controller>
+        //public void Post(string value)
+        //{
+        //}
+
+        //// PUT api/<controller>/5
+        //public void Put(int id, string value)
+        //{
+        //}
+
+        //// DELETE api/<controller>/5
+        //public void Delete(int id)
+        //{
+        //}
 
 
-        public static List<Restaurant> restaurantsWithinRadius { get; set; }
     }
-
-    public class Restaurant
-    {
-
-        public int Id { get; set; }
-        public String name { get; set; }
-        public int cuisine { get; set; }
-        public int fanciness { get; set; }
-        public String websiteUrl { get; set; }
-         public Address address { get; set; }
-         public Point point { get; set; }
-    }
-
-
 }
+
+
+
+
+
+
+
+
+
+

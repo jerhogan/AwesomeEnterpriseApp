@@ -101,5 +101,10 @@ namespace AwesomeEnterpriseApp.BusinessLogic
             //use finder to return list of viewmodels
             List<PresentedRestaurantUI> restaurantsInRadius = finder.getRestaurantsWithinRadius(request);
         }
+
+        internal List<PresentedRestaurantUI> getAllRestaurants()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
