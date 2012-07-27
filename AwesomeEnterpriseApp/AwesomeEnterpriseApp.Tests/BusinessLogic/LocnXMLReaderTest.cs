@@ -77,7 +77,7 @@ namespace AwesomeEnterpriseApp.Tests
         [TestMethod()]
         public void addEntryTest()
         {
-            LocnXMLReader_Accessor target = new LocnXMLReader_Accessor();
+            LocnXMLReader target = new LocnXMLReader();
 
             Context db = new Context();
             db.Database.Delete();

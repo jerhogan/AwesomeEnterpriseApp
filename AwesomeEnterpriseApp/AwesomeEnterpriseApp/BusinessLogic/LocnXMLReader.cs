@@ -12,7 +12,8 @@ namespace AwesomeEnterpriseApp.BusinessLogic
 {
     public class LocnXMLReader : IXMLReader
     {
-        private List<FilmLocations> filmLocations = new List<FilmLocations>();
+        // This variable is made public for unit testing
+        public List<FilmLocations> filmLocations = new List<FilmLocations>();
 
         private FilmLocationsDAL filmDAL = new FilmLocationsDAL();
 
@@ -146,7 +147,8 @@ namespace AwesomeEnterpriseApp.BusinessLogic
             //            Console.ReadLine();
         }
 
-        private void addEntry(string filmName,
+        // addEntry is made public for unit testing access
+        public void addEntry(string filmName,
                                double latCoord,
                                double lngCoord,
                                string locnDisplayText)

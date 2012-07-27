@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using AwesomeEnterpriseApp;
 using AwesomeEnterpriseApp.Controllers;
+using AwesomeEnterpriseApp.Models;
 
 namespace AwesomeEnterpriseApp.Tests.Controllers
 {
@@ -16,6 +17,10 @@ namespace AwesomeEnterpriseApp.Tests.Controllers
         public void Index()
         {
             // Arrange
+            Context db = new Context();
+            db.Database.Delete();
+            db.Database.Create();
+
             HomeController controller = new HomeController();
 
             // Act
@@ -23,7 +28,7 @@ namespace AwesomeEnterpriseApp.Tests.Controllers
 
             // Assert
             ViewDataDictionary viewData = result.ViewData;
-            Assert.AreEqual("Welcome to Awesome!", viewData["Message"]);
+            Assert.AreEqual("Welcome to an Awesome Enterprise App!", viewData["Message"]);
 
             List<SelectListItem> flicks = (List <SelectListItem> )viewData["movieList"];
             Assert.AreEqual(178, flicks.Count);
