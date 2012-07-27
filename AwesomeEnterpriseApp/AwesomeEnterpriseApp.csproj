@@ -138,7 +138,6 @@
     <Content Include="obj\Debug\AwesomeEnterpriseApp.pdb" />
     <Content Include="Scripts\finalSubmit.js" />
     <Content Include="Scripts\secondListAjaxCall.js" />
-    <Content Include="Views\RestaurantDetails\Index.ascx" />
     <Content Include="Views\RestaurantDetails\RestaurantDetails.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

@@ -32,9 +32,9 @@ namespace AwesomeEnterpriseApp
             );
 
             routes.MapRoute(
-                "RestaurantReg", // Route name
+                "RegisterRestaurant", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "RestaurantDetails", action = "", id = UrlParameter.Optional } // Parameter defaults
+                new { controller = "RestaurantDetails", action = "RestaurantDetails", id = UrlParameter.Optional } // Parameter defaults
             );
 
             routes.MapRoute(

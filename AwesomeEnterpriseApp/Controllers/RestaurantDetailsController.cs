@@ -11,7 +11,7 @@ namespace AwesomeEnterpriseApp.Controllers
         //
         // GET: /RestaurantDetails/
 
-        public ActionResult Index()
+        public ActionResult RestaurantDetails()
         {
             return View();
         }

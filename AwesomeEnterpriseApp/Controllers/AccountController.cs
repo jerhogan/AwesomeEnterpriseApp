@@ -50,7 +50,7 @@ namespace AwesomeEnterpriseApp.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("RestaurantDetails", "RestaurantDetails");
                     }
                 }
                 else
@@ -95,7 +95,7 @@ namespace AwesomeEnterpriseApp.Controllers
                 if (createStatus == MembershipCreateStatus.Success)
                 {
                     FormsService.SignIn(model.UserName, false /* createPersistentCookie */);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("RestaurantDetails", "RestaurantDetails");
                 }
                 else
                 {
