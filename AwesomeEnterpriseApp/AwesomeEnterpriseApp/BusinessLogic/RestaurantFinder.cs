@@ -15,6 +15,7 @@ namespace AwesomeEnterpriseApp.BusinessLogic
             private FilmLocationsDAL fdal = new FilmLocationsDAL();
             private List<Restaurant> restaurantsWithinRadius = null;
 
+        // This is the actual method you call, it will calculate what's within the radius and return ViewModels
         public List<PresentedRestaurantUI> getRestaurantsWithinRadius(IncomingRequestUI request)
         {
             List<Restaurant> restaurantsWithinRadius = queryForRestaurantsAndCalculate(request);
@@ -95,8 +96,9 @@ namespace AwesomeEnterpriseApp.BusinessLogic
 
         public void demoMethod()
         {
+           
             IncomingRequestUI request = new IncomingRequestUI();
-    //fill request with user values
+            //fill request with user values
 
             //create finder object
             RestaurantFinder finder = new RestaurantFinder();
