@@ -154,26 +154,6 @@ namespace AwesomeEnterpriseApp.Tests
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
-        /// <summary>
-        ///A test for xCentre
-        ///</summary>
-        // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
-        // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
-        // whether you are testing a page, web service, or a WCF service.
-        [TestMethod()]
-       // [HostType("ASP.NET")]
-       // [AspNetDevelopmentServerHost("C:\\Users\\Jack\\Git\\AwesomeEnterpriseApp\\AwesomeEnterpriseApp\\AwesomeEnterpriseApp", "/")]
-       // [UrlToTest("http://localhost:54116/")]
-        public void xCentreTest()
-        {
-            LocationCalculator target = new LocationCalculator(); // TODO: Initialize to an appropriate value
-            double expected = 0F; // TODO: Initialize to an appropriate value
-            double actual;
-            target.xCentre = expected;
-            actual = target.xCentre;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
 
         /// <summary>
         ///A test for xLocation
