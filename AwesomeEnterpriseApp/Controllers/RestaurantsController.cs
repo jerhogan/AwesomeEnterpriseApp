@@ -11,35 +11,37 @@ namespace AwesomeEnterpriseApp.Controllers
 {   //URI /api/restaurants
     public class RestaurantsController : ApiController
     {
-        static List< Restaurant> _restaurants = InitRestaurants();
+        static List< Restaurant> _restaurantsWhitinRadius = InitRestaurants();
         private static List<Restaurant> InitRestaurants()
         {
            // throw new NotImplementedException();
             var ret = new List<Restaurant>();
-            restaurantsWithinRadius = new List<Restaurant>();
-
-            return restaurantsWithinRadius;
+            //restaurantsWithinRadius = new List<Restaurant>();
+            ret.Add(new Restaurant());
+            //return restaurantsWithinRadius;
+            return ret;
         }
         public IEnumerable<Restaurant> Get()
         {
-            return _restaurants;
+            InitRestaurants();
+            return _restaurantsWhitinRadius;
         }
 
 
-        public static List<Restaurant> restaurantsWithinRadius { get; set; }
+        //public static List<Restaurant> restaurantsWithinRadius { get; set; }
     }
 
-    public class Restaurant
-    {
+    //public class Restaurant
+    //{
        
-        public int Id { get; set; }       
-        public String name { get; set; }
-        public int cuisine { get; set; }
-        public int fanciness { get; set; }
-        public String websiteUrl { get; set; }
+      //  public int Id { get; set; }       
+       // public String name { get; set; }
+       // public int cuisine { get; set; }
+        //public int fanciness { get; set; }
+        //public String websiteUrl { get; set; }
        // public Address address { get; set; }
        // public Point point { get; set; }
     }
 
 
-}
+

@@ -11,10 +11,11 @@ namespace AwesomeEnterpriseApp.BusinessLogic
     public class RestaurantFinder
     {
         // Instantiate DALs 
-            private RestaurantDAL rdal = new RestaurantDAL();
-            private FilmLocationsDAL fdal = new FilmLocationsDAL();
-            private List<Restaurant> restaurantsWithinRadius = null;
+        private RestaurantDAL rdal = new RestaurantDAL();
+        private FilmLocationsDAL fdal = new FilmLocationsDAL();
+        private List<Restaurant> restaurantsWithinRadius = null;
 
+        // This is the actual method you call, it will calculate what's within the radius and return ViewModels
         public List<PresentedRestaurantUI> getRestaurantsWithinRadius(IncomingRequestUI request)
         {
             List<Restaurant> restaurantsWithinRadius = queryForRestaurantsAndCalculate(request);
@@ -27,7 +28,7 @@ namespace AwesomeEnterpriseApp.BusinessLogic
 
         private static List<PresentedRestaurantUI> convertToViewModel(List<Restaurant> restaurantsWithinRadius)
         {
-            List<PresentedRestaurantUI> returnableModels = new List<PresentedRestaurantUI>(); 
+            List<PresentedRestaurantUI> returnableModels = new List<PresentedRestaurantUI>();
 
             if (restaurantsWithinRadius != null)
             {
@@ -35,10 +36,51 @@ namespace AwesomeEnterpriseApp.BusinessLogic
                 {
                     // Convert restaurant to viewmodel
                     PresentedRestaurantUI NewRest = new PresentedRestaurantUI();
-                    //NewRest.address = rest.address;
-                    //NewRest.cuisine = rest.cuisine; 
-                    //NewRest.address = rest.address;
+                    if (rest.name != null)
+                        NewRest.name = rest.name;
+                    if (rest.cuisine != null)
+                        NewRest.cuisine = rest.cuisine;
 
+                    String address = "";
+                    if (rest.address.houseNumber != null)
+                        address += rest.address.houseNumber + ", ";
+                    if (rest.address.streetAddress1 != null)
+                        address += rest.address.streetAddress1 + ", ";
+                    if (rest.address.streetAddress2 != null)
+                        address += rest.address.streetAddress2 + ", ";
+                    if (rest.address.zipCode != null)
+                        address += rest.address.zipCode + ", ";
+                    if (rest.address.city != null)
+                        address += rest.address.city;
+
+                    switch (rest.fanciness)
+                    {
+                        case 1:
+                            NewRest.fanciness = "Takeaway";
+                            break;
+                        case 2:
+                            NewRest.fanciness = "Diner";
+                            break;
+                        case 3:
+                            NewRest.fanciness = "Restaurant";
+                            break;
+                        case 4:
+                            NewRest.fanciness = "Fine Dining";
+                            break;
+                        case 5:
+                            NewRest.fanciness = "Awesome";
+                            break;
+                        default:
+                            NewRest.fanciness = "Nobody knows..";
+                            break;
+                    }
+
+                    if (rest.websiteUrl != null)
+                        NewRest.websiteURL = rest.websiteUrl;
+
+                    //NewRest.distance = 
+
+                    returnableModels.Add(NewRest);
                 }
             }
 
@@ -74,7 +116,7 @@ namespace AwesomeEnterpriseApp.BusinessLogic
             LocationCalculator calc = new LocationCalculator();
 
             // Iterate through all restaurants in the DB
-            for (int i=0; i<allRestaurants.Count; i++)
+            for (int i = 0; i < allRestaurants.Count; i++)
             {
                 // Passing the centre point, restaurant point and radius into the calculator
                 calc.setNewQuery(requestPoint, allRestaurants[i].point, request.radius);
@@ -90,13 +132,14 @@ namespace AwesomeEnterpriseApp.BusinessLogic
             return restaurantsWithinRadius;
 
         }
-       // public static void getFilmDetails();
+        // public static void getFilmDetails();
 
 
         public void demoMethod()
         {
+
             IncomingRequestUI request = new IncomingRequestUI();
-    //fill request with user values
+            //fill request with user values
 
             //create finder object
             RestaurantFinder finder = new RestaurantFinder();

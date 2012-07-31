@@ -7,7 +7,7 @@ using AwesomeEnterpriseApp.Models.UI;
 using AwesomeEnterpriseApp.Models;
 using System.Web.Mvc;
 using AwesomeEnterpriseApp.BusinessLogic;
-//using System.Web.Helpers;
+
 
 namespace AwesomeEnterpriseApp.Controllers
 {
@@ -17,47 +17,22 @@ namespace AwesomeEnterpriseApp.Controllers
 
         private FilmLocationsDAL fdal = new FilmLocationsDAL();
 
-     /*   public String getStubData(String filmName)
+        public String  getSecondList(String filmName)
         {
-            return filmName + " shot on 5th Avenue, Queens";
-        } */
+            String htmlList;
 
-         //public String[] getSecondList(String filmName)
-        public ActionResult getSecondList(String filmName)
-        {
-            List<String> allLocs = new List<string>();
-            LocationFinder finder = new LocationFinder();
-            List<SelectListItem> Locs = new List<SelectListItem>();
-            LocationListUI locationsViewModel = finder.getLocationsForFilm(filmName);
+            LocationListUI loc = new LocationFinder().getLocationsForFilm(filmName);
 
-            foreach (String loc in locationsViewModel.locations)
+            htmlList = "";
+            foreach (String location in loc.locations)
             {
-                Locs.Add(new SelectListItem { Text = loc });
+                htmlList = htmlList + "<option>" + location + "</option>";
             }
 
-           /* foreach (String title in films)
-            {
-
-                movies.Add(new SelectListItem { Text = title });
-
-            }*/
-
-           // return allLocs.ToArray();
-
-
-
-            ViewData["locationList"] = Locs;
-
-            return View();
-
+            return htmlList;
         }
 
-        private void Add(SelectListItem selectListItem)
-        {
-            throw new NotImplementedException();
-        }
 
-       
 
         public LocationListUI getLocationsForFilm(String filmName)
         {
@@ -83,7 +58,7 @@ namespace AwesomeEnterpriseApp.Controllers
             locations.locations = locationNames;
             
             return locations;
-        } 
+        }
 
     }
 }

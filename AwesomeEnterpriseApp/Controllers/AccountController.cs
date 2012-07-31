@@ -50,7 +50,7 @@ namespace AwesomeEnterpriseApp.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("RestaurantDetails", "RestaurantDetails");
+                        return RedirectToAction("Home", "RestaurantDetails");
                     }
                 }
                 else
@@ -83,7 +83,7 @@ namespace AwesomeEnterpriseApp.Controllers
             ViewData["PasswordLength"] = MembershipService.MinPasswordLength;
             return View();
         }
-
+       
         [HttpPost]
         public ActionResult Register(RegisterModel model)
         {
@@ -95,7 +95,7 @@ namespace AwesomeEnterpriseApp.Controllers
                 if (createStatus == MembershipCreateStatus.Success)
                 {
                     FormsService.SignIn(model.UserName, false /* createPersistentCookie */);
-                    return RedirectToAction("RestaurantDetails", "RestaurantDetails");
+                    return RedirectToAction("Home", "RestaurantDetails");
                 }
                 else
                 {
@@ -105,6 +105,9 @@ namespace AwesomeEnterpriseApp.Controllers
 
             // If we got this far, something failed, redisplay form
             ViewData["PasswordLength"] = MembershipService.MinPasswordLength;
+
+
+
             return View(model);
         }
 

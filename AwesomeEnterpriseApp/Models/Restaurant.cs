@@ -14,7 +14,7 @@ namespace AwesomeEnterpriseApp.Models
         [Column(Name = "name")]
         public String name { get; set; }
         [Column(Name = "cuisine")]
-        public int cuisine { get; set; }
+        public String cuisine { get; set; }
         [Column(Name = "fanciness")]
         public int fanciness { get; set; }
         [Column(Name = "websiteUrl")]
@@ -26,7 +26,7 @@ namespace AwesomeEnterpriseApp.Models
 
         public Restaurant() { }
 
-        public Restaurant(String name, int cuisine, int fanciness, String websiteUrl, Address address, Point point)
+        public Restaurant(String name, String cuisine, int fanciness, String websiteUrl, Address address, Point point)
         {
             this.name = name;
             this.cuisine = cuisine;

@@ -73,7 +73,7 @@ namespace AwesomeEnterpriseApp.Tests
         // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
         // whether you are testing a page, web service, or a WCF service.
         [TestMethod()]
-        [HostType("ASP.NET")]
+        //[HostType("ASP.NET")]
        // [AspNetDevelopmentServerHost("C:\\Users\\Jack\\Git\\AwesomeEnterpriseApp\\AwesomeEnterpriseApp\\AwesomeEnterpriseApp", "/")]
        // [UrlToTest("http://localhost:54116/")]
         public void LocationCalculatorConstructorTest()
@@ -96,7 +96,9 @@ namespace AwesomeEnterpriseApp.Tests
         public void isInsideRadiusTest()
         {
             LocationCalculator target = new LocationCalculator(); // TODO: Initialize to an appropriate value
-            double distance = 0.94;
+            
+            // Actual distance between locations = 0.94km;
+
             // 49-51 W 46th St
             target.xCentre = 40.756912;
             target.yCentre = -73.980989;
@@ -113,105 +115,29 @@ namespace AwesomeEnterpriseApp.Tests
             Assert.AreEqual(expected, actual);
         }
 
-        /// <summary>
-        ///A test for setNewQuery
-        ///</summary>
-        // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
-        // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
-        // whether you are testing a page, web service, or a WCF service.
-        [TestMethod()]
-        [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\Users\\Jack\\Git\\AwesomeEnterpriseApp\\AwesomeEnterpriseApp\\AwesomeEnterpriseApp", "/")]
-        [UrlToTest("http://localhost:54116/")]
-        public void setNewQueryTest()
+         [TestMethod()]
+        public void isInsideRadiusTestFALSE()
         {
             LocationCalculator target = new LocationCalculator(); // TODO: Initialize to an appropriate value
-            Point centre = null; // TODO: Initialize to an appropriate value
-            Point location = null; // TODO: Initialize to an appropriate value
-            double radius = 0F; // TODO: Initialize to an appropriate value
-            target.setNewQuery(centre, location, radius);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
-        }
 
-        /// <summary>
-        ///A test for radius
-        ///</summary>
-        // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
-        // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
-        // whether you are testing a page, web service, or a WCF service.
-        [TestMethod()]
-        [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\Users\\Jack\\Git\\AwesomeEnterpriseApp\\AwesomeEnterpriseApp\\AwesomeEnterpriseApp", "/")]
-        [UrlToTest("http://localhost:54116/")]
-        public void radiusTest()
-        {
-            LocationCalculator target = new LocationCalculator(); // TODO: Initialize to an appropriate value
-            double expected = 0F; // TODO: Initialize to an appropriate value
-            double actual;
-            target.radius = expected;
-            actual = target.radius;
+            // Actual distance between locations = 1.3km;
+
+            // 49-51 W 46th St
+            target.xCentre = 40.756912;
+            target.yCentre = -73.980989;
+
+            // 37-39 W 77th St
+            target.xLocation = 40.774361;
+            target.yLocation = -73.975244;
+
+            target.radius = 1; //km
+
+            bool actual = target.isInsideRadius();
+            bool expected = false;
+            actual = target.isInsideRadius();
             Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
-
-        /// <summary>
-        ///A test for xLocation
-        ///</summary>
-        // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
-        // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
-        // whether you are testing a page, web service, or a WCF service.
-        [TestMethod()]
-        //[HostType("ASP.NET")]
-        //[AspNetDevelopmentServerHost("C:\\Users\\Jack\\Git\\AwesomeEnterpriseApp\\AwesomeEnterpriseApp\\AwesomeEnterpriseApp", "/")]
-        //[UrlToTest("http://localhost:54116/")]
-        public void xLocationTest()
-        {
-            LocationCalculator target = new LocationCalculator(); // TODO: Initialize to an appropriate value
-            Point expected = new Point("01", "02");
-            //target.
-        }
-
-        /// <summary>
-        ///A test for yCentre
-        ///</summary>
-        // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
-        // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
-        // whether you are testing a page, web service, or a WCF service.
-        [TestMethod()]
-        [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\Users\\Jack\\Git\\AwesomeEnterpriseApp\\AwesomeEnterpriseApp\\AwesomeEnterpriseApp", "/")]
-        [UrlToTest("http://localhost:54116/")]
-        public void yCentreTest()
-        {
-            LocationCalculator target = new LocationCalculator(); // TODO: Initialize to an appropriate value
-            double expected = 0F; // TODO: Initialize to an appropriate value
-            double actual;
-            target.yCentre = expected;
-            actual = target.yCentre;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        ///A test for yLocation
-        ///</summary>
-        // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
-        // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
-        // whether you are testing a page, web service, or a WCF service.
-        [TestMethod()]
-        [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("C:\\Users\\Jack\\Git\\AwesomeEnterpriseApp\\AwesomeEnterpriseApp\\AwesomeEnterpriseApp", "/")]
-        [UrlToTest("http://localhost:54116/")]
-        public void yLocationTest()
-        {
-            LocationCalculator target = new LocationCalculator(); // TODO: Initialize to an appropriate value
-            double expected = 0F; // TODO: Initialize to an appropriate value
-            double actual;
-            target.yLocation = expected;
-            actual = target.yLocation;
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
+        
     }
 }

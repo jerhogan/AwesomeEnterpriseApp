@@ -1,5 +1,7 @@
-﻿$(document).ready(function () {
-    // alert("ok?";
+﻿
+
+$(document).ready(function () {
+    // alert("ok?");
 
     $("select#movieList").change(function () {
 
@@ -8,21 +10,23 @@
 
 
 
-        if ($('select#movieList').children(":selected")) {
+        if ($("select#movieList").children(":selected")) {
 
-            var filmName = $('select#movieList').children(":selected").html();
+            var filmName = $("select#movieList").children(":selected").html();
 
-            alert(filmName);
+            // alert("secondListAjaxCall:" + filmName);
 
             $.ajax({
-                type: 'POST',
-                url: '/LocationFinder/getSecondList/',
-                //dataType: 'xml',
+                type: "POST",
+                url: "/LocationFinder/getSecondList/",
+                // dataType: 'xml',
                 data: { filmName: filmName },
                 success: function (data) {
-                   // $.each(data
-                    $('select#locationList').html('<option>' + data + '</option>');
-                }, 
+
+                    $('select#locationList').html(data);
+
+                },
+
 
                 error: function showError() {
                     alert("There has been an error!")
@@ -30,7 +34,7 @@
 
             })
         }
-    });
+    },
 
 
 
@@ -39,32 +43,38 @@
         if ($('select#radiusList').children(":selected")) {
 
             var radius = $('select#radiusList').children(':selected').html();
+            var filmName = $("select#movieList").children(":selected").html();
+            var location = $("select#locationList").children(":selected").html();
+
             alert(radius);
+            alert(filmName);
+            alert(location);
 
 
             $.ajax({
-                type: 'POST',
-                url: '/RestaurantFinder/GetMessage/',
+                type: "POST",
+                url: "/RestaurantFinder/getMessage/",
                 // dataType: 'xml',
-                data: { radius: radius },
-                success: function (result) {
-                    // $('div#retInf p').empty();
+                data: { radius: radius, filmName: filmName, location: location },
+                success: function (data) {
+                    alert("In Ajax function for getMessage.");
+                    // $('div#retInf p').emptyresult();
                     //if (data != null) {
-                        $('#retInf').show();
-                        $('#retInf').html("<h5>" + result + "</h5>");
-                   // }
+                    $("#retInf").show();
+                    $("#retInf").html("<h5>" + data + "</h5>");
+                    // }
                     //} else {alert('Error in retrieving data!') }
 
                 },
 
                 error: function showError() {
-                    alert("There has been an error!")
+                    alert("There has been an error in GetMessage!")
                 }
 
             })
 
         }
-    });
+    }))
     //});
     //return false;
 });

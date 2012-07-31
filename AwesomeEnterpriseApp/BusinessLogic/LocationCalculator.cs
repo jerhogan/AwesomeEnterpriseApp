@@ -41,9 +41,6 @@ namespace AwesomeEnterpriseApp.BusinessLogic
 
             double distance = Math.Sqrt((xDiff * xDiff) + (yDiff * yDiff));
 
-            Console.Out.WriteLine(distance);
-            Console.In.ReadLine();
-
             if (distance <= radius)
             {
                 return true;

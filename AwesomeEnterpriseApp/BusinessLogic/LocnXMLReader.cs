@@ -155,6 +155,9 @@ namespace AwesomeEnterpriseApp.BusinessLogic
         {
             bool newFilm;
             FilmLocations filmLoc = null;
+            string processedLocnDisplayText;
+
+            processedLocnDisplayText = locnDisplayText.Replace("<br>", ", ");
 
             numFilms = filmLocations.Count;
             newFilm = true;
@@ -167,7 +170,7 @@ namespace AwesomeEnterpriseApp.BusinessLogic
             {
                 numFilms++;
                 filmLoc = filmDAL.addBaseFilmLocation(filmName);
-                filmDAL.addLocationToFilm(filmLoc.filmTitle, locnDisplayText, latCoord.ToString(), lngCoord.ToString());
+                filmDAL.addLocationToFilm(filmLoc.filmTitle, processedLocnDisplayText, latCoord.ToString(), lngCoord.ToString());
                 filmLocations.Add(filmLoc);
 
                 //filmLoc.filmTitle = filmName;
@@ -176,10 +179,9 @@ namespace AwesomeEnterpriseApp.BusinessLogic
             }
             else
             {
-                if (locationDoesNotExist(filmName, locnDisplayText))
+                if (locationDoesNotExist(filmName, processedLocnDisplayText))
                 {
-                    filmLoc = filmLocations[numFilms - 1];
-                    filmDAL.addLocationToFilm(filmLoc.filmTitle, locnDisplayText, latCoord.ToString(), lngCoord.ToString());
+                    filmDAL.addLocationToFilm(filmName, processedLocnDisplayText, latCoord.ToString(), lngCoord.ToString());
                 }
             }
 

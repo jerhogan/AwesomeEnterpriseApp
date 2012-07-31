@@ -101,6 +101,7 @@
     <Compile Include="BusinessLogic\LocationCalculator.cs" />
     <Compile Include="BusinessLogic\LocationFinder.cs" />
     <Compile Include="BusinessLogic\LocnXMLReader.cs" />
+    <Compile Include="BusinessLogic\RestaurantCreator.cs" />
     <Compile Include="BusinessLogic\RestaurantFinder.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -136,15 +137,15 @@
     <Content Include="obj\Debug\AwesomeEnterpriseApp.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\AwesomeEnterpriseApp.dll" />
     <Content Include="obj\Debug\AwesomeEnterpriseApp.pdb" />
-    <Content Include="Scripts\finalSubmit.js" />
-    <Content Include="Scripts\secondListAjaxCall.js" />
-    <Content Include="Views\Home\LocationFinder.aspx" />
-    <Content Include="Views\RestaurantDetails\RestaurantDetails.aspx" />
+    <None Include="Scripts\finalSubmit.js" />
+    <None Include="Scripts\secondListAjaxCall.js" />
+    <Content Include="Views\Home\RestaurantDetails.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -153,7 +154,7 @@
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
+    <EmbeddedResource Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\MicrosoftAjax.js" />

@@ -12,9 +12,7 @@ namespace AwesomeEnterpriseApp.Models.UI
        public String cuisine { get; set; }
        public String fanciness { get; set; }
        public String websiteURL { get; set; }
-       public Address address { get; set; }
-
-
-
+       public String address { get; set; }
+       public String distance { get; set; }
     }
 }

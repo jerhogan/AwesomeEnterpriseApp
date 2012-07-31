@@ -16,9 +16,10 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
         {
 
             List<FilmLocations> locs = null;
-
+            // Prevent lazy loading by specifying the elements required
             locs = db.filmLocations.Include("locations.point").ToList();
 
+            // Find the required item
             foreach (FilmLocations film in locs)
             {
                 if (film.Id == idFilmLocation)
@@ -27,9 +28,11 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
                 }
             }
 
+            // Or return null.. :)
             return null;
         }
 
+        // The same with name instead of ID
         public FilmLocations findFilmLocationByName(string filmName)
         {
             List<FilmLocations> locs = null;
@@ -56,6 +59,7 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
 
             foreach (FilmLocations film in filmLocs)
             {
+                // This will specifically return a list of locations associated with a film object
                 if (film.filmTitle.Equals(filmName))
                 {
                     locs = film.locations.ToList();
@@ -69,7 +73,7 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
         {
 
             List<FilmLocations> films = new List<FilmLocations>();
-
+            // Get all film objects with their dependencies
             films = db.filmLocations.Include("locations.point").ToList();
 
             return films;
@@ -87,10 +91,8 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
             FilmLocations film = new FilmLocations();
 
             List<Location> locations = new List<Location>();
-
-            //Location location = new Location("L", new Point(1, 2));
-            //locations.Add(location);
             
+            // Creates a base location object with an empty list. Recalled by the API reader to fill sublist with objects
             film = new FilmLocations(filmTitle, locations);
 
             db.filmLocations.Add(film);
@@ -107,23 +109,27 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
 
             if (filmToModify != null)
             {
+                // Create a location with dependent Point object. This will auto-persist the dependents
                 Location location = new Location(locationName, new Point(xCoord, yCoord));
 
+                // If there is no list, create one
                 if (filmToModify.locations != null)
                     locsInFilm = filmToModify.locations.ToList();
                 else
                     locsInFilm = new List<Location>();
 
+                // Add the new location to the existing list..
                 locsInFilm.Add(location);
 
+                // ... and save it back into the object
                 filmToModify.locations = locsInFilm;
             }
-            //locsInFilm = new List<Location>();
-            //filmToModify.locations = locsInFilm;
 
+            // EF will only save the main object (and hence the dependents) if it is marked as modified
             db.Entry(filmToModify).State = EntityState.Modified;
             db.SaveChanges();
 
+            // Check it comes back (legacy)
             FilmLocations x = findFilmLocationByName(filmName);
 
             return filmToModify;
@@ -131,6 +137,7 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
 
         public FilmLocations removeLocationFromFilm(string filmName, string locationName)
         {
+            // Same as add dependency but reversed
             FilmLocations filmToModify = findFilmLocationByName(filmName);
 
             if (filmToModify != null)

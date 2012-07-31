@@ -12,14 +12,22 @@
         <div id="firstList">
         <h6>Choose your movie:
         </h6>
-        
+        <br />
         <%= Html.DropDownList("movieList") %>
         </div>
 
 
   
-        <!-- SECEOND LIST -->
-       
+        <!-- SECOND LIST -->
+       <div id="secondList">
+         
+        <h6>Choose filming location:</h6>
+        <select id="locationList" name="locationList"></select>
+        <br />
+      </div>
+-
+        
+        <br/>
 
         <h6>Choose restaurant proximity:</h6>
         <select id="radiusList" name="radiusList">

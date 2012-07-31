@@ -4,7 +4,7 @@
     $('button#send').click(function() {
 
         var filmName = $('select#movieList').children(":selected").html();
-        alert(filmName);
+        alert("finalSubmit.js:" + filmName);
         var Location = $('select#locationList').children(':selected').html();
         alert(Location);
         var Radius = $('select#radiusList').children(':selected').html();

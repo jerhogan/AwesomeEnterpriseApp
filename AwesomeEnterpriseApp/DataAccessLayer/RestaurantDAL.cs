@@ -30,19 +30,10 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
 
         public List<Restaurant> findAllRestaurants()
         {
-            List<Restaurant> rests = null;
-
-            rests = db.restaurants.ToList();
-
-            foreach (Restaurant restaurant in rests)
-            {
-                rests.Add(restaurant);
-            }
-
-            return rests;
+            return db.restaurants.Include("address").Include("point").ToList();
         }
 
-        public Restaurant addRestaurant(String name, int cuisine, int fanciness, String websiteUrl, String houseNumber, String street1,
+        public Restaurant addRestaurant(String name, String cuisine, int fanciness, String websiteUrl, String houseNumber, String street1,
             String street2, String zipCode, String city, String xCoord, String yCoord)
         {
             AddressDAL addressDAL = new AddressDAL();
@@ -54,13 +45,14 @@ namespace AwesomeEnterpriseApp.DataAccessLayer
             Restaurant restaurant = new Restaurant(name, cuisine, fanciness, websiteUrl, restaurantAddress, point);
 
             db.restaurants.Add(restaurant);
+            db.Entry(restaurant).State = System.Data.EntityState.Added;
             db.SaveChanges();
 
             return restaurant;
         }
 
 
-        public Restaurant updateRestaurant(String name, int cuisine, int fanciness, String websiteUrl, String houseNumber, String street1,
+        public Restaurant updateRestaurant(String name, String cuisine, int fanciness, String websiteUrl, String houseNumber, String street1,
             String street2, String zipCode, String city, String xCoord, String yCoord)
         {
             Restaurant existingRest = findRestaurant(xCoord, yCoord);

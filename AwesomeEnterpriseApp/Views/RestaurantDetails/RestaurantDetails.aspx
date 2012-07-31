@@ -12,11 +12,11 @@
         
     </p>
 
-    <% using (Html.BeginForm()) { %>
+    <% using (Html.BeginForm("action=IncomingRequestUI.cs")) { %>
         <%: Html.ValidationSummary(true, "Account creation was unsuccessful. Please correct the errors and try again.") %>
         <div>
             <fieldset>
-                <legend>Restaurant Infromtion</legend>
+                <legend>Restaurant Information</legend>
                 
                 <div class="editor-label">
                     <label>Restaurant name</label>
