@@ -42,7 +42,7 @@ namespace AwesomeEnterpriseApp.BusinessLogic
                         NewRest.cuisine = rest.cuisine;
 
                     String address = "";
-                    if (rest.address.houseNumber != null)
+                    if (string.IsNullOrEmpty(rest.address.houseNumber))
                         address += rest.address.houseNumber + ", ";
                     if (rest.address.streetAddress1 != null)
                         address += rest.address.streetAddress1 + ", ";
@@ -52,6 +52,8 @@ namespace AwesomeEnterpriseApp.BusinessLogic
                         address += rest.address.zipCode + ", ";
                     if (rest.address.city != null)
                         address += rest.address.city;
+
+                    NewRest.address = address;
 
                     switch (rest.fanciness)
                     {
