@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessLogic\APIReader.cs" />
+    <Compile Include="BusinessLogic\Geocoder.cs" />
     <Compile Include="BusinessLogic\Interfaces\IXMLReader.cs" />
     <Compile Include="BusinessLogic\LocationCalculator.cs" />
     <Compile Include="BusinessLogic\LocationFinder.cs" />

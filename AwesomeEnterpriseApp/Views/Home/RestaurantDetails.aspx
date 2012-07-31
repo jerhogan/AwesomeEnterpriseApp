@@ -68,21 +68,16 @@
                 </div>
              
                 <div class="editor-field">
-                   <label>House number</label>
+                   <label>House Number</label>
                     <input type="text" name="houseNumber" /><br />
-                   <label>Street 1</label>
+                   <label>Street Address Line 1</label>
                     <input type="text" name="streetAddress1" /><br />
-                   <label>Street 2</label> 
+                   <label>Street Address Line 2</label> 
                     <input type="text" name="streetAddress2" /><br />
                    <label>City</label> 
                     <input type="text" name="zipCode" /><br />
-                   <label>Zip code</label>
+                   <label>Zip Code</label>
                     <input type="text" name="city" />
-
-                   <label>Latitude</label> 
-                    <input type="text" name="x" /><br />
-                   <label>Longtitude</label>
-                    <input type="text" name="y" />
 
                 </div>
                 <p>

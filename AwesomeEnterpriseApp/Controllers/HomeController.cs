@@ -112,11 +112,11 @@ namespace AwesomeEnterpriseApp.Controllers
             return View();
         }
 
-        public ActionResult RestaurantDetails(String name, String cuisine, String fanciness, String websiteUrl, String houseNumber, String streetAddress1, String streetAddress2, String zipCode, String city, String x, String y)
+        public ActionResult RestaurantDetails(String name, String cuisine, String fanciness, String websiteUrl, String houseNumber, String streetAddress1, String streetAddress2, String zipCode, String city)
         {
             if (name != null)
             {
-                new RestaurantCreator().createNewRestaurant(name, cuisine, Convert.ToInt32(fanciness), websiteUrl, houseNumber, streetAddress1, streetAddress2, zipCode, city, x, y);
+                new RestaurantCreator().createNewRestaurant(name, cuisine, Convert.ToInt32(fanciness), websiteUrl, houseNumber, streetAddress1, streetAddress2, zipCode, city);
             }
             
             return View();
