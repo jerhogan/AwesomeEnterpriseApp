@@ -53,6 +53,9 @@ namespace AwesomeEnterpriseApp.BusinessLogic
                     if (rest.address.city != null)
                         address += rest.address.city;
 
+
+                    NewRest.address = address;
+
                     switch (rest.fanciness)
                     {
                         case 1:

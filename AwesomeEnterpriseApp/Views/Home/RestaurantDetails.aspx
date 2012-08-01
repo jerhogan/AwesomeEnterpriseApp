@@ -85,11 +85,6 @@
                    <label>Zip code</label>
                     <input type="text" name="city" /><br />
 
-                   <label>Latitude</label> 
-                    <input type="text" name="x" /><br />
-                   <label>Longtitude</label>
-                    <input type="text" name="y" />
-
                 </div>
                 <p>
                     <input type="submit" value="Register" />
