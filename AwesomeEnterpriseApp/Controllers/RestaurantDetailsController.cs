@@ -15,10 +15,10 @@ namespace AwesomeEnterpriseApp.Controllers
         //
         // GET: /RestaurantDetails/
 
-        public Boolean callRestaurantDetails(String name, String cuisine, int fanciness, String websiteUrl, String houseNumber, String streetAddress1, String streetAddress2, String zipCode, String city)
+        public Boolean callRestaurantDetails(String name, String cuisine, int fanciness, String websiteUrl, String houseNumber, String streetAddress1, String streetAddress2, String zipCode, String city, String x, String y)
         {
 
-            Boolean success = new RestaurantCreator().createNewRestaurant(name, cuisine, fanciness, websiteUrl, houseNumber, streetAddress1, streetAddress2, zipCode, city);
+            Boolean success = new RestaurantCreator().createNewRestaurant(name, cuisine, fanciness, websiteUrl, houseNumber, streetAddress1, streetAddress2, zipCode, city, x, y);
 
             return success;
 

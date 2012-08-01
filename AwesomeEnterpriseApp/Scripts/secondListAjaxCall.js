@@ -46,9 +46,9 @@ $(document).ready(function () {
             var filmName = $("select#movieList").children(":selected").html();
             var location = $("select#locationList").children(":selected").html();
 
-            alert(radius);
-            alert(filmName);
-            alert(location);
+            //alert(radius);
+            //alert(filmName);
+            //alert(location);
 
 
             $.ajax({
@@ -57,13 +57,13 @@ $(document).ready(function () {
                 // dataType: 'xml',
                 data: { radius: radius, filmName: filmName, location: location },
                 success: function (data) {
-                    alert("In Ajax function for getMessage.");
-                    // $('div#retInf p').emptyresult();
-                    //if (data != null) {
-                    $("#retInf").show();
-                    $("#retInf").html("<h5>" + data + "</h5>");
-                    // }
-                    //} else {alert('Error in retrieving data!') }
+
+                    if (data != null) {
+                        $("#retInf").show();
+                        $("#retInf").html("<p>" + data + "</p>");
+                    }
+                    else
+                    { $("#retInf p").html('Sorry, no restaurants registered in this area!'); }
 
                 },
 

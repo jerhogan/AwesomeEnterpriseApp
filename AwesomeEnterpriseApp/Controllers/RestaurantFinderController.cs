@@ -28,7 +28,7 @@ namespace AwesomeEnterpriseApp.Controllers
 
             foreach (PresentedRestaurantUI rest in restList)
             {
-                String details = "<h3>Name: " + rest.name + "</h3>";
+                String details = "<h5>Name: " + rest.name + "</h5>";
                 if (rest.cuisine != null)
                     details += "<br>Cuisine: " + rest.cuisine;
                 if (rest.fanciness != null)

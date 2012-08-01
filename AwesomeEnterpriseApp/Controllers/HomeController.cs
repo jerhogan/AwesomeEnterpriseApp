@@ -20,8 +20,8 @@ namespace AwesomeEnterpriseApp.Controllers
             ViewData["Message"] = "Welcome to an Awesome Enterprise App!";
 
             //Context db = new Context();
-           // db.Database.Delete();
-           // db.Database.Create();
+            //db.Database.Delete();
+            //db.Database.Create();
 
             //LocationCalculator target = new LocationCalculator(); // TODO: Initialize to an appropriate value
             //double distance = 0.94;
@@ -112,11 +112,11 @@ namespace AwesomeEnterpriseApp.Controllers
             return View();
         }
 
-        public ActionResult RestaurantDetails(String name, String cuisine, String fanciness, String websiteUrl, String houseNumber, String streetAddress1, String streetAddress2, String zipCode, String city)
+        public ActionResult RestaurantDetails(String name, String cuisine, String fanciness, String websiteUrl, String houseNumber, String streetAddress1, String streetAddress2, String zipCode, String city, String x, String y)
         {
             if (name != null)
             {
-                new RestaurantCreator().createNewRestaurant(name, cuisine, Convert.ToInt32(fanciness), websiteUrl, houseNumber, streetAddress1, streetAddress2, zipCode, city);
+                new RestaurantCreator().createNewRestaurant(name, cuisine, Convert.ToInt32(fanciness), websiteUrl, houseNumber, streetAddress1, streetAddress2, zipCode, city, x, y);
             }
             
             return View();

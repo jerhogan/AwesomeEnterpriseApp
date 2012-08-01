@@ -7,7 +7,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <div id="restForm">
-     <h2>Set up your restaurant profile:</h2>
+     <h2>Set up your restaurant profile</h2>
     <p>
         
     </p>
@@ -15,7 +15,7 @@
     <form id="myform" method="post" action='<%= Url.Action("RestaurantDetails/callRestaurantDetails") %>'>
 
     
-        <%: Html.ValidationSummary(true, "Account creation was unsuccessful. Please correct the errors and try again.") %>
+        <%: Html.ValidationSummary(true, "Profile creation was unsuccessful. Please correct the errors and try again.") %>
         
             <fieldset>
                 <legend>Restaurant Information</legend>
@@ -46,11 +46,16 @@
                 <div class="editor-label">
                     <label>Take Away ------------------------> Fine Dining</label>
                 </div>
+
                 <div class="editor-field">
                    <input class="radio" type="radio" name="fanciness" value="1" />
+                 
                     <input class="radio" type="radio" name="fanciness" value="2" />
+                  
                      <input class="radio" type="radio" name="fanciness" value="3" />
+                     
                       <input class="radio" type="radio" name="fanciness" value="4" />
+                     
                        <input type="radio" class="radio" name="fanciness" value="5" />
                 </div>
                 <br />
@@ -68,21 +73,37 @@
                 </div>
              
                 <div class="editor-field">
-                   <label>House Number</label>
+                   <label>House number</label>
                     <input type="text" name="houseNumber" /><br />
-                   <label>Street Address Line 1</label>
+                   <label>Street 1</label>
                     <input type="text" name="streetAddress1" /><br />
-                   <label>Street Address Line 2</label> 
+                   <label>Street 2</label> 
                     <input type="text" name="streetAddress2" /><br />
                    <label>City</label> 
                     <input type="text" name="zipCode" /><br />
-                   <label>Zip Code</label>
-                    <input type="text" name="city" />
+                   <label>Zip code</label>
+                    <input type="text" name="city" /><br />
+
+                   <label>Latitude</label> 
+                    <input type="text" name="x" /><br />
+                   <label>Longtitude</label>
+                    <input type="text" name="y" />
 
                 </div>
                 <p>
                     <input type="submit" value="Register" />
+                    <script type="text/javascript">
+                    
+                        $(document).ready(function () {
+                          $('input[type="submit"]').click(function(){
+                            $("#info").fadeIn().delay(15000).fadeOut();
+                            });
+                        });
+                    
+                    </script>
+
                 </p>
+                <p id="info">Your restaurant profile has been saved.</p>
             </fieldset>
             </form>
         </div>
