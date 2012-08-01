@@ -19,7 +19,8 @@
         
             <fieldset>
                 <legend>Restaurant Information</legend>
-                
+                <p id="info">Your restaurant profile has been saved.</p>
+ 
                 <div class="editor-label">
                     <label>Restaurant name</label>
                    
@@ -96,15 +97,14 @@
                     
                         $(document).ready(function () {
                           $('input[type="submit"]').click(function(){
-                            $("#info").fadeIn().delay(15000).fadeOut();
+                            $("#info").show();
                             });
                         });
                     
                     </script>
 
                 </p>
-                <p id="info">Your restaurant profile has been saved.</p>
-            </fieldset>
+                           </fieldset>
             </form>
         </div>
     

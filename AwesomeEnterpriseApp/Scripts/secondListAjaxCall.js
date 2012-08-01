@@ -22,7 +22,7 @@ $(document).ready(function () {
                 // dataType: 'xml',
                 data: { filmName: filmName },
                 success: function (data) {
-
+                 
                     $('select#locationList').html(data);
 
                 },
@@ -60,7 +60,7 @@ $(document).ready(function () {
 
                     if (data != null) {
                         $("#retInf").show();
-                        $("#retInf").html("<p>" + data + "</p>");
+                        $("#retInf").html('<h4>Your selection of restaurants:</h4><br/><p style="margin-left:30px;display:block"></p>' + data + '</p>');
                     }
                     else
                     { $("#retInf p").html('Sorry, no restaurants registered in this area!'); }

@@ -42,8 +42,7 @@
 
     
       <div id="retInf">
-        <h4>Your selection of restaurants:</h4>
-        <p></p>
+       
       </div>
     </form>
 </asp:Content>

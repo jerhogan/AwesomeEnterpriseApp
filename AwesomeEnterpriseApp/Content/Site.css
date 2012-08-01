@@ -374,8 +374,11 @@ div#title
 
 /* CUSTOM STYLES */
 
-#lists{border:1px solid #ccc;float:left;width:40%;margin-left:5%;background:url('filmFade.png') no-repeat center center}
+#lists{border:1px solid #ccc;float:left;width:40%;padding-left:15px;margin-left:5%;background:url('filmFade.png') no-repeat center center}
 
+#listsAbout{border:1px solid #ccc;float:left;width:90%;min-height:300px;margin-left:5%;background:url('filmFade.png') no-repeat center center}
+
+#listsAbout div{padding-top:10px;border:3px solid #ccc;padding-left:10px;margin-left:20px;color:#fff;background:url('awesome.jpg')no-repeat top left;width:250px;height:130px}
 #restForm
 {
     width:90%;
@@ -386,7 +389,8 @@ div#title
     
     #myForm
     {
-        
+      border:1px solid #ccc;
+  
         }
 
 #retInf
