@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting.Web;
 using AwesomeEnterpriseApp.Models;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using AwesomeEnterpriseApp.Models.UI;
 
 namespace AwesomeEnterpriseApp.Tests
 {
@@ -69,74 +70,61 @@ namespace AwesomeEnterpriseApp.Tests
 
 
         /// <summary>
-        ///A test for addEntry
+        ///A test for readAllFilms
         ///</summary>
         // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
         // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
         // whether you are testing a page, web service, or a WCF service.
         [TestMethod()]
-        public void addEntryTest()
+        public void readAllFilmsTest()
         {
             LocnXMLReader target = new LocnXMLReader();
 
-            Context db = new Context();
-            db.Database.Delete();
-            db.Database.Create();
+            // Context db = new Context();
+            // db.Database.Delete();
+            // db.Database.Create();
 
-            string filmName = "Die Hard";
-            double latCoord = 30.5;
-            double lngCoord = -70.25;
-            string locnDisplayText = "Manhattan";
-            target.addEntry(filmName, latCoord, lngCoord, locnDisplayText);
-            Assert.AreEqual(target.filmLocations.Count, 1);
-            Assert.AreEqual(target.filmLocations[0].filmTitle, "Die Hard");
-            Assert.AreEqual(target.filmLocations[0].locations.Count, 1);
-            foreach (Location currentLoc in target.filmLocations[0].locations)
+            target.setSource("https://nycopendata.socrata.com/download/qb3k-n8mm/application/xml");
+            List<FilmLocations> filmList = target.readAllFilms();
+
+            LocationFinder locFinder = new LocationFinder();
+            bool film25thHourFound = false;
+            bool filmAThousandClownsFound = false;
+            foreach (String film in locFinder.getAllFilmNames())
             {
-                Assert.AreEqual(currentLoc.locnText, "Manhattan");
-                Assert.AreEqual(currentLoc.point.x, 30.5);
-                Assert.AreEqual(currentLoc.point.y, -70.25);
+                if (film == "25th Hour")
+                    film25thHourFound = true;
+                else if (film == "A Thousand Clowns")
+                    filmAThousandClownsFound = true;
             }
-            filmName = "Die Hard";
-            latCoord = 25.5;
-            lngCoord = -55.25;
-            locnDisplayText = "Brooklyn";
-            target.addEntry(filmName, latCoord, lngCoord, locnDisplayText);
-            Assert.AreEqual(target.filmLocations.Count, 1);
-            Assert.AreEqual(target.filmLocations[0].filmTitle, "Die Hard");
-            Assert.AreEqual(target.filmLocations[0].locations.Count, 2);
-            foreach (Location currentLoc in target.filmLocations[0].locations)
+            Assert.AreEqual(film25thHourFound, true);
+            Assert.AreEqual(filmAThousandClownsFound, true);
+
+            LocationListUI locList = locFinder.getLocationsForFilm("25th Hour");
+            bool foundLoc1 = false;
+            bool foundLoc2 = false;
+            foreach (String locText in locList.locations)
             {
-                if (currentLoc.locnText == "Manhattan")
-                {
-                    Assert.AreEqual(currentLoc.locnText, "Manhattan");
-                    Assert.AreEqual(currentLoc.point.x, 30.5);
-                    Assert.AreEqual(currentLoc.point.y, -70.25);
-                }
-                else if (currentLoc.locnText == "Brooklyn")
-                {
-                    Assert.AreEqual(currentLoc.locnText, "Brooklyn");
-                    Assert.AreEqual(currentLoc.point.x, 25.5);
-                    Assert.AreEqual(currentLoc.point.y, -55.25);
-                }
+                if (locText == "World Trade Center, Lower Manhattan")
+                    foundLoc1 = true;
+                else if (locText == "Carl Schurz Park, Upper East Side, Manhattan")
+                    foundLoc2 = true;
                 else
-                    Assert.Fail("Unexpected location in film " + currentLoc.locnText);
+                    Assert.Fail("Unexpected location in film 25th Hour " + locText);
             }
+            Assert.AreEqual(foundLoc1, true);
+            Assert.AreEqual(foundLoc2, true);
 
-            filmName = "Die Hard 2";
-            latCoord = 22.75;
-            lngCoord = -66.66666666667;
-            locnDisplayText = "Queens";
-            target.addEntry(filmName, latCoord, lngCoord, locnDisplayText);
-            Assert.AreEqual(target.filmLocations.Count, 2);
-            Assert.AreEqual(target.filmLocations[1].filmTitle, "Die Hard 2");
-            Assert.AreEqual(target.filmLocations[1].locations.Count, 1);
-            foreach (Location currentLoc in target.filmLocations[1].locations)
+            locList = locFinder.getLocationsForFilm("A Thousand Clowns");
+            foundLoc1 = false;
+            foreach (String locText in locList.locations)
             {
-                Assert.AreEqual(currentLoc.locnText, "Queens");
-                Assert.AreEqual(currentLoc.point.x, 22.75);
-                Assert.AreEqual(currentLoc.point.y, -66.66666666667);
+                if (locText == "Statue of Liberty, Liberty Island, New York Harbor")
+                    foundLoc1 = true;
+                else
+                    Assert.Fail("Unexpected location in film A Thousand Clowns " + locText);
             }
+            Assert.AreEqual(foundLoc1, true);
         }
     }
 }

@@ -80,7 +80,11 @@ namespace AwesomeEnterpriseApp.Tests
         {
             LocationCalculator target = new LocationCalculator();
             LocationCalculator target2 = new LocationCalculator();
-            Assert.AreEqual(target, target2);
+            Assert.AreEqual(target.radius, target2.radius);
+            Assert.AreEqual(target.xCentre, target2.xCentre);
+            Assert.AreEqual(target.yCentre, target2.yCentre);
+            Assert.AreEqual(target.xLocation, target2.xLocation);
+            Assert.AreEqual(target.yLocation, target2.yLocation);
         }
 
         /// <summary>

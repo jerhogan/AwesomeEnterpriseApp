@@ -158,8 +158,8 @@ namespace AwesomeEnterpriseApp.Tests.Controllers
             // Assert
             Assert.IsInstanceOfType(result, typeof(RedirectToRouteResult));
             RedirectToRouteResult redirectResult = (RedirectToRouteResult)result;
-            Assert.AreEqual("Home", redirectResult.RouteValues["controller"]);
-            Assert.AreEqual("Index", redirectResult.RouteValues["action"]);
+            Assert.AreEqual("RestaurantDetails", redirectResult.RouteValues["controller"]);
+            Assert.AreEqual("Home", redirectResult.RouteValues["action"]);
             Assert.IsTrue(((MockFormsAuthenticationService)controller.FormsService).SignIn_WasCalled);
         }
 
@@ -262,8 +262,8 @@ namespace AwesomeEnterpriseApp.Tests.Controllers
             // Assert
             Assert.IsInstanceOfType(result, typeof(RedirectToRouteResult));
             RedirectToRouteResult redirectResult = (RedirectToRouteResult)result;
-            Assert.AreEqual("Home", redirectResult.RouteValues["controller"]);
-            Assert.AreEqual("Index", redirectResult.RouteValues["action"]);
+            Assert.AreEqual("RestaurantDetails", redirectResult.RouteValues["controller"]);
+            Assert.AreEqual("Home", redirectResult.RouteValues["action"]);
         }
 
         [TestMethod]
